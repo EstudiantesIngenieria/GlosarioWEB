@@ -385,6 +385,11 @@ a {
   padding: 90px;
 }
 
+.hola{
+  background-color: #3b5998;
+  text-align: center;
+}
+
 .footer img {
   width: 25%;
   padding: 10px 0px;
