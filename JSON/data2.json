@@ -1,0 +1,47 @@
+{
+    "glosario": [
+        {
+            "id": "PAL01",
+            "fecha_de_creacion": "2021-09-21T18:25:43.511Z",
+            "autor": "Kelvin Cano",
+            "titulo": "title",
+            "contenido": "es visualizar el futuro de la empresa fijando metas y objetivos que se desean lograr, decidiendo las actividades y encargados de la misma.",
+            "ejemplos": [
+                "ejemplo1 ejemplo2"
+            ],
+            "modificacion": [
+                {
+                    "autor": "yossu",
+                    "fecha": "2021-09-20T18:25:43.511Z"
+                },
+                {
+                    "autor": "doug",
+                    "fecha": "2021-09-21T18:25:43.511Z"
+                }
+            ]
+        }
+        
+    ],
+    "usuarios": [
+        {
+            "nombre": "douglas *syndra champ",
+            "correo": "douglas@gmail.com",
+            "contraseña": "proplayerdelol",
+            "imagen": "ruta"
+        },
+        {
+            "nombre": "Fer Gamer",
+            "contraseña": "ferG"
+        },
+        {
+            "nombre": "jnyalx100",
+            "correo": "jona@gmail.com",
+            "contraseña": "proplayerdeloleovannyesmerrzerg"
+        },
+        {
+            "nombre": "yossu",
+            "correo": "yossu@gmail.com",
+            "contraseña": "45contra98"
+        }
+    ]
+}
