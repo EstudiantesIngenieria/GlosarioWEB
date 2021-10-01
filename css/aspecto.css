@@ -1,0 +1,328 @@
+img{
+    display:block;
+    margin:auto;
+    width: 700px;
+}
+
+:root {
+  --text: #ffffff;
+  --line: #275EFE;
+  --font-size: 16px;
+  --duration: .44s;
+  --duration-line: .84s;
+}
+p {
+
+  font-size: 18px;
+  margin: 0;
+  color: var(--text);
+  font-size: var(--font-size);
+  line-height: var(--font-size);
+  zoom: 1.5;
+}
+p .link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: white;
+}
+p .link div {
+  overflow: hidden;
+}
+p .link div:first-child {
+  display: flex;
+  overflow: hidden;
+  text-shadow: 0 var(--font-size) 0 var(--text);
+}
+p .link div:last-child {
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  left: 0;
+  bottom: -3px;
+  height: 5px;
+}
+p .link div:last-child svg {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 300%;
+  height: 5px;
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 63.5px 128px;
+  stroke-dashoffset: var(--line-offset, 190.25px);
+  transform: translateX(var(--line-x)) translateZ(0);
+  transition: transform var(--line-d, 0s), stroke-dashoffset var(--line-d, 0s);
+}
+p .link div span {
+  display: block;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  font-style: normal;
+  transition: transform var(--duration) ease;
+  transform: translateY(var(--m, 0));
+}
+p .link div span:nth-child(1) {
+  transition-delay: 0.05s;
+}
+p .link div span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+p .link div span:nth-child(3) {
+  transition-delay: 0.15s;
+}
+p .link div span:nth-child(4) {
+  transition-delay: 0.2s;
+}
+p .link div span:nth-child(5) {
+  transition-delay: 0.25s;
+}
+p .link div span:nth-child(6) {
+  transition-delay: 0.3s;
+}
+p .link div span:nth-child(7) {
+  transition-delay: 0.35s;
+}
+p .link div span:nth-child(8) {
+  transition-delay: 0.4s;
+}
+p .link div span:nth-child(9) {
+  transition-delay: 0.45s;
+}
+p .link div span:nth-child(10) {
+  transition-delay: 0.5s;
+}
+p .link div span:nth-child(11) {
+  transition-delay: 0.55s;
+}
+p .link:hover {
+  --m: calc(var(--font-size) * -1);
+  --line-d: var(--duration-line);
+  --line-x: 65.66%;
+  --line-offset: 63.5px;
+}
+
+/*Carrusel*/
+.slider{
+  width: 95%;
+  margin: auto;
+  overflow: hidden;
+}
+.slider ul{
+  display: flex;
+  padding: 0;
+  width: 400%;
+  animation: cambio 20s infinite alternate;
+  animation-timing-function: ease-in;
+}
+.slider li{
+  width: 100%;
+  list-style: none;
+}
+.slider img{
+  width: 100%;
+}
+@keyframes cambio {
+  0% {margin-left: 0;}
+  20% {margin-left: 0;}
+
+  25% {margin-left: -100%;}
+  45% {margin-left: -100%;}
+
+  50% {margin-left: -200%;}
+  70% {margin-left: -200%;}
+
+  75% {margin-left: -300%;}
+  100% {margin-left: -300%;}
+}
+
+/* =======================
+=====Efectos Btn Enviar=== */
+
+.button {
+  --primary: #7acc2d;
+  --primary-dark: #7acc2d;
+  --primary-darkest: #0053b1;
+  --shadow: rgba(0, 16, 75, 0.2);
+  --text: #fff;
+  --text-opacity: 1;
+  --success: #fff;
+  --success-x: -8px;
+  --success-stroke: 14px;
+  --success-opacity: 0;
+  --border-radius: 4px;
+  --overflow: hidden;
+  --x: 0px;
+  --y: 0px;
+  --rotate: 0deg;
+  --plane-x: 0px;
+  --plane-y: 0px;
+  --plane-opacity: 1;
+  --trails: rgba(0, 16, 75, 0.2);
+  --trails-stroke: 57px;
+  --left-wing-background: #07f;
+  --left-wing-first-x: 0%;
+  --left-wing-first-y: 0%;
+  --left-wing-second-x: 50%;
+  --left-wing-second-y: 0%;
+  --left-wing-third-x: 0%;
+  --left-wing-third-y: 100%;
+  --left-body-background: #07f;
+  --left-body-first-x: 50%;
+  --left-body-first-y: 0%;
+  --left-body-second-x: 50%;
+  --left-body-second-y: 100%;
+  --left-body-third-x: 0%;
+  --left-body-third-y: 100%;
+  --right-wing-background: #07f;
+  --right-wing-first-x: 50%;
+  --right-wing-first-y: 0%;
+  --right-wing-second-x: 100%;
+  --right-wing-second-y: 0%;
+  --right-wing-third-x: 100%;
+  --right-wing-third-y: 100%;
+  --right-body-background: #07f;
+  --right-body-first-x: 50%;
+  --right-body-first-y: 0%;
+  --right-body-second-x: 50%;
+  --right-body-second-y: 100%;
+  --right-body-third-x: 100%;
+  --right-body-third-y: 100%;
+  display: block;
+  cursor: pointer;
+  position: relative;
+  border: 0;
+  padding: 12px 0;
+  width: 188px;
+  text-align: center;
+  margin: 0;
+  line-height: 25px;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: inherit;
+  background: none;
+  outline: none;
+  color: var(--text);
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.button .plane,
+.button .trails {
+  pointer-events: none;
+  position: absolute;
+}
+.button .plane {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  filter: drop-shadow(0 2px 4px var(--shadow));
+  transform: translate(var(--x), var(--y)) rotate(var(--rotate)) translateZ(0);
+}
+.button .plane .left,
+.button .plane .right {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: var(--plane-opacity);
+  transform: translate(var(--plane-x), var(--plane-y)) translateZ(0);
+}
+.button .plane .left:before, .button .plane .left:after,
+.button .plane .right:before,
+.button .plane .right:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius);
+  transform: translate(var(--part-x, 0.25%), var(--part-y, 0)) translateZ(0);
+  z-index: var(--z-index, 2);
+  background: var(--background, var(--left-wing-background));
+  -webkit-clip-path: polygon(var(--first-x, var(--left-wing-first-x)) var(--first-y, var(--left-wing-first-y)), var(--second-x, var(--left-wing-second-x)) var(--second-y, var(--left-wing-second-y)), var(--third-x, var(--left-wing-third-x)) var(--third-y, var(--left-wing-third-y)));
+          clip-path: polygon(var(--first-x, var(--left-wing-first-x)) var(--first-y, var(--left-wing-first-y)), var(--second-x, var(--left-wing-second-x)) var(--second-y, var(--left-wing-second-y)), var(--third-x, var(--left-wing-third-x)) var(--third-y, var(--left-wing-third-y)));
+}
+.button .plane .left:after {
+  --part-x: 0;
+  --z-index: 1;
+  --background: var(--left-body-background);
+  --first-x: var(--left-body-first-x);
+  --first-y: var(--left-body-first-y);
+  --second-x: var(--left-body-second-x);
+  --second-y: var(--left-body-second-y);
+  --third-x: var(--left-body-third-x);
+  --third-y: var(--left-body-third-y);
+}
+.button .plane .right:before {
+  --part-x: -0.25%;
+  --z-index: 2;
+  --background: var(--right-wing-background);
+  --first-x: var(--right-wing-first-x);
+  --first-y: var(--right-wing-first-y);
+  --second-x: var(--right-wing-second-x);
+  --second-y: var(--right-wing-second-y);
+  --third-x: var(--right-wing-third-x);
+  --third-y: var(--right-wing-third-y);
+}
+.button .plane .right:after {
+  --part-x: 0;
+  --z-index: 1;
+  --background: var(--right-body-background);
+  --first-x: var(--right-body-first-x);
+  --first-y: var(--right-body-first-y);
+  --second-x: var(--right-body-second-x);
+  --second-y: var(--right-body-second-y);
+  --third-x: var(--right-body-third-x);
+  --third-y: var(--right-body-third-y);
+}
+.button .trails {
+  display: block;
+  width: 33px;
+  height: 64px;
+  top: 16px;
+  left: 28px;
+  fill: none;
+  stroke: var(--trails);
+  stroke-linecap: round;
+  stroke-width: 2;
+  stroke-dasharray: 57px;
+  stroke-dashoffset: var(--trails-stroke);
+  transform: rotate(68deg) translateZ(0);
+}
+.button span {
+  display: block;
+  position: relative;
+  z-index: 4;
+  opacity: var(--text-opacity);
+}
+.button span.success {
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 12px;
+  transform: translateX(var(--success-x)) translateZ(0);
+  opacity: var(--success-opacity);
+  color: var(--success);
+}
+.button span.success svg {
+  display: inline-block;
+  vertical-align: top;
+  width: 16px;
+  height: 16px;
+  margin: 4px 4px 0 0;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 14px;
+  stroke: var(--success);
+  stroke-dashoffset: var(--success-stroke);
+}
