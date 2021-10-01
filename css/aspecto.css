@@ -1,0 +1,107 @@
+img{
+    display:block;
+    margin:auto;
+    width: 700px;
+}
+
+:root {
+  --text: #2B3044;
+  --line: #275EFE;
+  --font-size: 16px;
+  --duration: .44s;
+  --duration-line: .84s;
+}
+p {
+
+  font-size: 18px;
+  margin: 0;
+  color: var(--text);
+  font-size: var(--font-size);
+  line-height: var(--font-size);
+  zoom: 1.5;
+}
+p .link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: white;
+}
+p .link div {
+  overflow: hidden;
+}
+p .link div:first-child {
+  display: flex;
+  overflow: hidden;
+  text-shadow: 0 var(--font-size) 0 var(--text);
+}
+p .link div:last-child {
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  left: 0;
+  bottom: -3px;
+  height: 5px;
+}
+p .link div:last-child svg {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 300%;
+  height: 5px;
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 63.5px 128px;
+  stroke-dashoffset: var(--line-offset, 190.25px);
+  transform: translateX(var(--line-x)) translateZ(0);
+  transition: transform var(--line-d, 0s), stroke-dashoffset var(--line-d, 0s);
+}
+p .link div span {
+  display: block;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  font-style: normal;
+  transition: transform var(--duration) ease;
+  transform: translateY(var(--m, 0));
+}
+p .link div span:nth-child(1) {
+  transition-delay: 0.05s;
+}
+p .link div span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+p .link div span:nth-child(3) {
+  transition-delay: 0.15s;
+}
+p .link div span:nth-child(4) {
+  transition-delay: 0.2s;
+}
+p .link div span:nth-child(5) {
+  transition-delay: 0.25s;
+}
+p .link div span:nth-child(6) {
+  transition-delay: 0.3s;
+}
+p .link div span:nth-child(7) {
+  transition-delay: 0.35s;
+}
+p .link div span:nth-child(8) {
+  transition-delay: 0.4s;
+}
+p .link div span:nth-child(9) {
+  transition-delay: 0.45s;
+}
+p .link div span:nth-child(10) {
+  transition-delay: 0.5s;
+}
+p .link div span:nth-child(11) {
+  transition-delay: 0.55s;
+}
+p .link:hover {
+  --m: calc(var(--font-size) * -1);
+  --line-d: var(--duration-line);
+  --line-x: 65.66%;
+  --line-offset: 63.5px;
+}
