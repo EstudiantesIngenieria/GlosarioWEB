@@ -89,10 +89,12 @@ function verifica() {
     if (user) {
       const img = document.getElementById("avatar");
       img.src = user.photoURL;
+      $('#btnInicioSesion').hide();
+      $('#btnCerrarSesion').show();
       
     } else {
       console.log('si entro2')
-
+      $('#btnCerrarSesion').hide();
     }
   });
 }
@@ -101,6 +103,7 @@ function singouts() {
   signOut(auth)
     .then(() => {
       $("#btnInicioSesion").show();
+      $('#btnCerrarSesion').hide();
       const img = document.getElementById("avatar");
       img.src = "/GlosarioWEB/imagenes/usuario.png";
     })
@@ -134,5 +137,6 @@ function accesFaccebook() {
       // ...
     });
 }
+
 
 export { registroCorreo, accesoCorreo, accesoGmail, accesFaccebook, singouts, verifica};

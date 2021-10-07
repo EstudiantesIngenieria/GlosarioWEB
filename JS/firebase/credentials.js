@@ -8,6 +8,7 @@ import { getFirestore,
   //FIRESTORE
   collection,
   addDoc,
+  getDocs,
 } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
 
 import {
@@ -60,6 +61,7 @@ export {
   //firestore
   collection,
   addDoc,
+  getDocs,
   //analytics
   analytics
 };

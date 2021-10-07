@@ -13,6 +13,12 @@ import { crearPost } from "../publicaciones/publicacion.js";
 $(document).ready(function () {
   verifica();
 });
+//click cerrar sesion 
+$('#btnCerrarSesion').click(function (e) { 
+  e.preventDefault();
+  singouts();
+});
+
 
 //popup
 $(".overlay").click(function (e) { 
