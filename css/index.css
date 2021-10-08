@@ -155,7 +155,6 @@ body {
   color: #fff;
   display: flex;
   flex-direction: column;
-label
 }
 .footer .contenedor-footer .formulario-contactenos .form-col1 input,
 .footer .contenedor-footer .formulario-contactenos .form-col2 input {
@@ -260,6 +259,8 @@ label
   background: #eee;
   font-family: 'Montserrat', sans-serif;
   padding: 0.5em;
+
+  
 }
 .posts .post .post-titulo h5 {
   font-weight: bold;
@@ -282,6 +283,8 @@ label
   font-family: 'Allerta', sans-serif;
   padding: 0.5em;
   font-size: 17px;
+  text-align: justify;
+  color: #000;
 }
 .posts .post .post-videolink {
   text-align: center;
@@ -425,6 +428,9 @@ label
     display: inline-block;
     margin-top: 25px;
     width: 47%;
+  }
+  .post-descripcion p {
+    color: #000;
   }
   .posts .post .post-descripcion {
     height: 120px;

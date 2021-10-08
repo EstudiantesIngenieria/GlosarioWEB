@@ -2,8 +2,8 @@ window.onload = function () {
     setTimeout(
         function () {
             $("#onload").fadeOut();
-            $('#hidden').removeClass(".hideen");
-        }, 500
+            $('.hidden').removeClass('hidden');
+        }, 1500
     )
 }
 $('.closebtn').click(function (e) { 
