@@ -7,7 +7,7 @@ import {
   accesFaccebook,
   verifica,
 } from "../firebase/authentication.js";
-import { crearPost } from "../publicaciones/publicacion.js";
+import { crearPost, showPosts} from "../publicaciones/publicacion.js";
 
 
 $(document).ready(function () {
@@ -39,7 +39,14 @@ $('.close-btn').click(function (e) {
 });
 
 
-
+$("#btnTodoPost").click(function (e) {
+  let final
+  e.preventDefault()
+  console.log("ya entre")
+  const $sectionPosts = document.getElementById("posts")
+  showPosts().then(value => $sectionPosts.innerHTML= value.replace('undefined', ''))
+  showPosts().then(val => console.log(val.replace('undefined', '')))
+});
 
 
 $("#btnMisPost").click(function (e) { 

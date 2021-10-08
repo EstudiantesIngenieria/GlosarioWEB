@@ -9,7 +9,8 @@ async function obtener_palabras() {
   querySnapshot.forEach((doc) => {
     const wordId = doc.data();
     //console.log(wordId)
-    arreglo.push(wordId);
+    let joinObject = Object.assign(wordId, {id: doc.id})
+    arreglo.push(joinObject);
   });
 }
 obtener_palabras();
@@ -24,6 +25,7 @@ const filtrar = () => {
     console.log(nombre)
     if (nombre.indexOf(textoIngresado) !== -1) {
       let html = obtenerPostTemplate(
+        obj.id,
         obj.autor,
         obj.titulo,
         obj.descripcion,
@@ -55,6 +57,7 @@ $("#inputValid").keyup(function (e) {
 });
 
 function obtenerPostTemplate(
+  id,
   autor,
   titulo,
   descripcion,
@@ -65,7 +68,7 @@ function obtenerPostTemplate(
   if (imagenLink) {
     return `<article class="post">
           <div class="post-titulo">
-              <h5>${titulo}</h5>
+              <h5>${titulo} ${id}</h5>
           </div>
           <div class="post-calificacion">
               <a class="post-estrellita-llena" href="*"></a>
@@ -91,6 +94,10 @@ function obtenerPostTemplate(
                   </div>
                   <div class="col m6">
                       Autor: ${autor}
+                  </div>
+                  <div>
+                    <input id="nombreContacto" type="button" value="Editar" />
+                    <input id="nombreContacto" type="button" value="Eliminar" />
                   </div>        
               </div>
           </div>
@@ -126,8 +133,13 @@ function obtenerPostTemplate(
                       </div>
                       <div class="col m6">
                           Autor: ${autor}
-                      </div>        
+                      </div>
+                      <div>
+                        <input id="nombreContacto" type="button" value="Editar" />
+                        <input id="nombreContacto" type="button" value="Eliminar" />
+                      </div>          
                   </div>
               </div>
           </article>`;
 }
+export{arreglo}
