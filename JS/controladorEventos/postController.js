@@ -8,7 +8,9 @@ import {
   verifica,
 } from "../firebase/authentication.js";
 import { crearPost, showPosts} from "../publicaciones/publicacion.js";
-
+import { insertWord, deleteWord } from "../publicaciones/crud.js"
+import { uploadImg } from "../cloudStorage/uploadCloud.js"
+import { arreglo } from "../search/buscador.js"
 
 $(document).ready(function () {
   verifica();
@@ -48,10 +50,37 @@ $("#btnTodoPost").click(function (e) {
   showPosts().then(val => console.log(val.replace('undefined', '')))
 });
 
+//Submit new post when btnRegistroPost is clicked
+$('#btnRegistroPost').click(function (e) { 
+  e.preventDefault();
+  //get the file that's gonna be uploaded
+  const inpFile = document.getElementById("btnUploadFile");
+  const file = inpFile.files[0];
+  //get the value from the title input
+  const postTitle = document.getElementById("tituloNewPost").value;
+  //get the value from the description input
+  const postDesc = document.getElementById("descripcionNewPost").value;
+  //get the value from the video link input
+  const postVidLink = document.getElementById("linkVideoNewPost").value;
+  //check if user selected a file
+  if (typeof file !== "undefined") {
+    //call the uploadImg function and insertWord function
+    insertWord('Author', postTitle, postDesc, file.name, postVidLink, file);
+  } else {
+    //only call the insertWord function
+    insertWord('Author', postTitle, postDesc, null, postVidLink, null);
+  }
+});
+
+$('#delete-btn-post').click(function(e) {
+  e.preventDefault();
+  console.log("Funcionando");
+  // deleteWord(e.target.id);
+});
 
 $("#btnMisPost").click(function (e) { 
   e.preventDefault();
-  crearPost('1', 'Acta de constitución', 'Documento en el que se encuentra de forma resumida los datos y componentes clave de la fase de iniciación del proyecto como lo pueden ser el Alcance, Objetivos o Stakeholders.', null, null)
+  // crearPost('1', 'Acta de constitución', 'Documento en el que se encuentra de forma resumida los datos y componentes clave de la fase de iniciación del proyecto como lo pueden ser el Alcance, Objetivos o Stakeholders.', null, null)
 });
 
 $("#btnInicioSesion").click(function (e) {

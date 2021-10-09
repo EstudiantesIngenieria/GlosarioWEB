@@ -50,8 +50,8 @@ async function showPosts() {
       <h2 class="autorPosts" id="autorDe${doc.data().titulo}">Autor: ${doc.data().autor}</h2>
       <h2 id="fechaDe${doc.data().titulo}" class="fechaPosts">Fecha Publicacion ${doc.data().fecha}</h2>
       <div>
-        <input id="nombreContacto" type="button" value="Editar" />
-        <input id="nombreContacto" type="button" value="Eliminar" />
+        <input id="${doc.id}" class="edit-btn-post" type="button" value="Editar" />
+        <input id="${doc.id}" class="delete-btn-post" type="button" value="Eliminar" />
       </div> 
     </div>
     `

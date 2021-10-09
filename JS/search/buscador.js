@@ -11,6 +11,7 @@ async function obtener_palabras() {
     //console.log(wordId)
     let joinObject = Object.assign(wordId, {id: doc.id})
     arreglo.push(joinObject);
+    console.log(arreglo);
   });
 }
 obtener_palabras();
@@ -68,7 +69,7 @@ function obtenerPostTemplate(
   if (imagenLink) {
     return `<article class="post">
           <div class="post-titulo">
-              <h5>${titulo} ${id}</h5>
+              <h5 id="${id}">${titulo}</h5>
           </div>
           <div class="post-calificacion">
               <a class="post-estrellita-llena" href="*"></a>
@@ -96,8 +97,8 @@ function obtenerPostTemplate(
                       Autor: ${autor}
                   </div>
                   <div>
-                    <input id="nombreContacto" type="button" value="Editar" />
-                    <input id="nombreContacto" type="button" value="Eliminar" />
+                    <input id="edit-btn-post" type="button" value="Editar" />
+                    <input id="delete-btn-post" type="button" value="Eliminar" />
                   </div>        
               </div>
           </div>
