@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: "Flaticon";
   src: url("../fonts/Flaticon.eot");
@@ -110,6 +109,11 @@ body {
 
 
 .menu {
+
+  display: flexbox;
+
+
+
   background: #219cca;
   border-left: 10px solid #fff;
   box-shadow: 0 8px 10px rgba(0,0,0,0.5);
@@ -156,7 +160,6 @@ body {
   color: #fff;
   display: flex;
   flex-direction: column;
-label
 }
 .footer .contenedor-footer .formulario-contactenos .form-col1 input,
 .footer .contenedor-footer .formulario-contactenos .form-col2 input {
@@ -261,6 +264,8 @@ label
   background: #eee;
   font-family: 'Montserrat', sans-serif;
   padding: 0.5em;
+
+  
 }
 .posts .post .post-titulo h5 {
   font-weight: bold;
@@ -283,6 +288,8 @@ label
   font-family: 'Allerta', sans-serif;
   padding: 0.5em;
   font-size: 17px;
+  text-align: justify;
+  color: #000;
 }
 .posts .post .post-videolink {
   text-align: center;
@@ -426,6 +433,9 @@ label
     display: inline-block;
     margin-top: 25px;
     width: 47%;
+  }
+  .post-descripcion p {
+    color: #000;
   }
   .posts .post .post-descripcion {
     height: 120px;

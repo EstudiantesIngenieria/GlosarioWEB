@@ -1,0 +1,99 @@
+{
+    "Palabras": [
+        [{
+            "id": "PAL01",
+            "fecha_de_creacion" : "2021-09-21T18:25:43.511Z",
+            "autor" : "usuario",
+            "titulo" : "title",
+            "texto" : "es visualizar el futuro de la empresa fijando metas y objetivos que se desean lograr, decidiendo las actividades y encargados de la misma.",
+            "ejemplos" : ["ejemplo1 ejemplo2"],
+            "imagen" : "www.drive/palabra01.com",
+            "modificacion": [
+                {
+                    "autor" : "yossu",
+                    "fecha" : "2021-09-20T18:25:43.511Z"
+                }, 
+                {
+                    "autor" : "doug",
+                    "fecha" : "2021-09-21T18:25:43.511Z"
+                }
+            ]
+        },
+        {
+            "id": "PAL02",
+            "fecha_de_creacion" : "2021-09-21T18:25:43.511Z",
+            "autor" : "usuario2",
+            "titulo" : "title",
+            "texto" : "es visualizar el futuro de la empresa fijando metas y objetivos que se desean lograr, decidiendo las actividades y encargados de la misma.",
+            "ejemplos" : ["ejemplo1 ejemplo2"],
+            "imagen" : "www.drive/palabra01.com",
+            "modificacion": [
+                {
+                    "autor" : "yossu",
+                    "fecha" : "2021-09-20T18:25:43.511Z"
+                }, 
+                {
+                    "autor" : "doug",
+                    "fecha" : "2021-09-21T18:25:43.511Z"
+                }
+            ]
+        },
+        {
+            "id": "PAL03",
+            "fecha_de_creacion" : "2021-09-21T18:25:43.511Z",
+            "autor" : "usuario",
+            "titulo" : "title",
+            "texto" : "es visualizar el futuro de la empresa fijando metas y objetivos que se desean lograr, decidiendo las actividades y encargados de la misma.",
+            "ejemplos" : ["ejemplo1 ejemplo2"],
+            "imagen" : "www.drive/palabra01.com",
+            "modificacion": [
+                {
+                    "autor" : "yossu",
+                    "fecha" : "2021-09-20T18:25:43.511Z"
+                }, 
+                {
+                    "autor" : "doug",
+                    "fecha" : "2021-09-21T18:25:43.511Z"
+                }
+            ]
+        },
+        {
+            "id": "PAL04",
+            "fecha_de_creacion" : "2021-09-21T18:25:43.511Z",
+            "autor" : "usuario2",
+            "titulo" : "title",
+            "texto" : "es visualizar el futuro de la empresa fijando metas y objetivos que se desean lograr, decidiendo las actividades y encargados de la misma.",
+            "ejemplos" : ["ejemplo1 ejemplo2"],
+            "imagen" : "www.drive/palabra01.com",
+            "modificacion": [
+                {
+                    "autor" : "yossu",
+                    "fecha" : "2021-09-20T18:25:43.511Z"
+                }, 
+                {
+                    "autor" : "doug",
+                    "fecha" : "2021-09-21T18:25:43.511Z"
+                }
+            ]
+        },
+        {
+            "id": "PAL05",
+            "fecha_de_creacion" : "2021-09-21T18:25:43.511Z",
+            "autor" : "usuario",
+            "titulo" : "title",
+            "texto" : "es visualizar el futuro de la empresa fijando metas y objetivos que se desean lograr, decidiendo las actividades y encargados de la misma.",
+            "ejemplos" : ["ejemplo1 ejemplo2"],
+            "imagen" : "www.drive/palabra01.com",
+            "modificacion": [
+                {
+                    "autor" : "yossu",
+                    "fecha" : "2021-09-20T18:25:43.511Z"
+                }, 
+                {
+                    "autor" : "doug",
+                    "fecha" : "2021-09-21T18:25:43.511Z"
+                }
+            ]
+        }]
+    ]
+}
