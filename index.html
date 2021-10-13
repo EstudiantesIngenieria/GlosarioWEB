@@ -29,6 +29,26 @@
             <div></div>
         </div>
     </div>
+    <nav class="menu">
+        <ul>
+            <li><a id="btnTodoPost">Todos los Posts</a></li>
+            <li><a id="btnMisPost">Mis Posts</a></li>
+            <li><a id="btnModalPost">Realiza un Post</a></li>
+            <li><a href="index.html#footer">Contactenos</a></li>
+            <li><a href="index.html#footer">Revista Digital</a></li>
+        </ul>
+        <!-- buscador para cada post -->
+        <div class="form-group">
+            <!-- en la parte de la clase agregamos is-valid o is-invalid para marcar un error solo se le agrega la maenra -->
+            <input type="text" placeholder="Ingrese la palabra a buscar" class="form-control is-invalid" id="inputValid">
+            <input type="image" src="./icons/search-solid.svg" alt="Buscador" id="logobuscar">
+        </div>
+    </nav>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
     <header class="headerppal">
         <figure class="header-logotipo">
             <img src="https://i.ibb.co/nCtbLkv/logo.jpg" alt="Blog Logotipo">
@@ -44,22 +64,7 @@
             </figure>
 
     </header>
-    <nav class="menu">
-        <ul>
-            <li><a id="btnTodoPost">Todos los Posts</a></li>
-            <li><a id="btnMisPost">Mis Posts</a></li>
-            <li><a id="btnModalPost">Realiza un Post</a></li>
-            <li><a href="index.html#footer">Contactenos</a></li>
-            <li><a href="index.html#footer">Revista Digital</a></li>
-        </ul>
-         <!-- buscador para cada post -->
-         <div class="form-group">
-            <!-- en la parte de la clase agregamos is-valid o is-invalid para marcar un error solo se le agrega la maenra -->
-            <input type="text" placeholder="Ingrese la palabra a buscar" class="form-control is-invalid"
-                id="inputValid">
-            <input type="image" src="./icons/search-solid.svg" alt="Buscador" id="logobuscar">
-        </div>
-    </nav>
+   
     
     <!-- 
     <h4 id="tituloPost" class="titulo-posts">
@@ -114,9 +119,7 @@
                 <p class="realizadopor"><strong>Programadores desarrollando</strong></p>
                 <p class="realizadoclase"><strong>Ingenieria</strong></p>
                 <div class="logos-redes">
-                    <a class="logo-facebook" target="_blank" href="#"></a>
-                    <a class="logo-twitter" target="_blank" href="#"></a>
-                    <a class="logo-github" target="_blank" href="https://github.com/elmergustavo"></a>
+            
                 </div>
             </div>
 
@@ -371,6 +374,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js'></script>
 <script src="./script.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="nav.js"></script>
 
 <!-- srips de back end -->
 <script type="module" src="./JS/controladorEventos/postController.js"></script>

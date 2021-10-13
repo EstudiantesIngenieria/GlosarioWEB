@@ -203,3 +203,10 @@ button {
 .container-category label:hover{
   opacity: 0.9;
 }
+
+/* Nav  */ 
+nav.sticky{
+  background: #3a6cf4;
+  padding: 10px 100px;
+  box-shadow: 0 8px 10px rgba(0,0,0,0.5);
+}
