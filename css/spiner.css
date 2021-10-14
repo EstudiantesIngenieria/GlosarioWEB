@@ -160,20 +160,53 @@ button {
   color: black;
 }
 
-
 /* buscar */
 #logobuscar:hover{
   transform: scale(1.2);
 }
 #logobuscar{
+  
   width: 40px;
   height: 30px;
 }
 .form-group{
+  height: 0px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
 }
 #inputValid{
+  border-bottom: 1px solid #ffffff;
   width: 300px;
+}
+
+
+/*  Css indice */
+.container-category{
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.container-category label{
+  color: #222;
+  padding: 6px 20px;
+  margin: 5px;
+  font-size: 15px;
+  background: #e2e2e2;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.container-category label:hover{
+  opacity: 0.9;
+}
+
+/* Nav  */ 
+nav.sticky{
+  background: #3a6cf4;
+  padding: 10px 100px;
+  box-shadow: 0 8px 10px rgba(0,0,0,0.5);
 }

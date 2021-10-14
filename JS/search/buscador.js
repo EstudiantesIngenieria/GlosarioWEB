@@ -9,7 +9,7 @@ async function obtener_palabras() {
   querySnapshot.forEach((doc) => {
     const wordId = doc.data();
     //console.log(wordId)
-    let joinObject = Object.assign(wordId, {id: doc.id})
+    let joinObject = Object.assign(wordId, { id: doc.id });
     arreglo.push(joinObject);
     console.log(arreglo);
   });
@@ -17,13 +17,18 @@ async function obtener_palabras() {
 obtener_palabras();
 
 const filtrar = () => {
-  $('.post').remove();
+  $(".post").remove();
   obtener_palabras();
   const textoIngresado = formulario.value.toLowerCase();
 
   arreglo.forEach((obj) => {
-    let nombre = obj.descripcion.toLowerCase() + ". " + obj.titulo.toLowerCase()+ ". " + obj.autor.toLowerCase();
-    console.log(nombre)
+    let nombre =
+      obj.descripcion.toLowerCase() +
+      ". " +
+      obj.titulo.toLowerCase() +
+      ". " +
+      obj.autor.toLowerCase();
+    console.log(nombre);
     if (nombre.indexOf(textoIngresado) !== -1) {
       let html = obtenerPostTemplate(
         obj.id,
@@ -34,10 +39,10 @@ const filtrar = () => {
         obj.imagenLink,
         obj.fechaCreacion
       );
-      $('.posts').append(html);
+      $(".posts").append(html);
     }
   });
-  if (resultado.innerHTML === ' ') {
+  if (resultado.innerHTML === " ") {
     resultado.innerHTML += `
     <h1>NO HAY RESULTADOS</h1>
     `;
@@ -50,11 +55,11 @@ $("#logobuscar").click(function (e) {
 });
 
 $("#inputValid").keyup(function (e) {
-    // Number 13 is the "Enter" key on the keyboard
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      filtrar();
-    }
+  // Number 13 is the "Enter" key on the keyboard
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    filtrar();
+  }
 });
 
 function obtenerPostTemplate(
@@ -69,24 +74,16 @@ function obtenerPostTemplate(
   if (imagenLink) {
     return `<article class="post">
           <div class="post-titulo">
-              <h5>${titulo}</h5>
+              <h5 id="${id}">${titulo}</h5>
           </div>
-          <div class="post-calificacion">
-              <a class="post-estrellita-llena" href="*"></a>
-              <a class="post-estrellita-llena" href="*"></a>
-              <a class="post-estrellita-llena" href="*"></a>
-              <a class="post-estrellita-llena" href="*"></a>
-              <a class="post-estrellita-vacia" href="*"></a>
-          </div>
-          <div class="post-video">                
-              <img id="imgVideo" src='${imagenLink}' class="post-imagen-video" 
-                  alt="Imagen Video">     
-          </div>
-          <div class="post-videolink">
-              <a href="${videoLink}" target="blank">Ver Video</a>                            
-          </div>
+          
+
+          
+          
           <div class="post-descripcion">
-              <p>${descripcion}</p>
+              <textarea class = "txt_area_post" readonly="readonly">
+               ${descripcion}
+            </textarea>
           </div>
           <div class="post-footer container">
               <div class="row">
@@ -109,23 +106,13 @@ function obtenerPostTemplate(
               <div class="post-titulo">
                   <h5>${titulo}</h5>
               </div>
-              <div class="post-calificacion">
-                  <a class="post-estrellita-llena" href="*"></a>
-                  <a class="post-estrellita-llena" href="*"></a>
-                  <a class="post-estrellita-llena" href="*"></a>
-                  <a class="post-estrellita-llena" href="*"></a>
-                  <a class="post-estrellita-vacia" href="*"></a>
-              </div>
-              <div class="post-video">
-                  <iframe type="text/html" width="500" height="385" src='${videoLink}'
-                      frameborder="0"></iframe>
-                  </figure>
-              </div>
-              <div class="post-videolink">
-                  Video
-              </div>
-              <div class="post-descripcion">
-                  <p>${descripcion}</p>
+              
+
+
+              <div class="post-descripcion" >
+                  <textarea class = "txt_area_post" readonly="readonly">
+               ${descripcion}
+            </textarea>
               </div>
               <div class="post-footer container">
                   <div class="row">
@@ -135,12 +122,12 @@ function obtenerPostTemplate(
                       <div class="col m6">
                           Autor: ${autor}
                       </div>
-                      <div>
-                        <input id="${id}" class="edit-btn-post"  type="button" value="Editar" />
-                        <input id="${id}" class="delete-btn-post" type="submit" value="Eliminar" />
+                      <div class="input-btn">
+                        <input class="edit-btn-post" id="nombreContacto" type="button" value="Editar" sytle="justify-items: center" />
+                        <input class="delete-btn-post" id="nombreContacto" type="button" value="Eliminar" />
                       </div>          
                   </div>
               </div>
           </article>`;
 }
-export{arreglo}
+export { arreglo };

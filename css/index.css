@@ -41,6 +41,42 @@
   font-weight: normal;
   font-style: normal;
 }
+
+
+
+/*Boton de ir arriba*/
+
+#button-up{
+  width: 60px;
+  height: 60px;
+  background: #46a2fd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  cursor: pointer;
+  border: 4px solid transparent;
+  transition: all 300ms ease;
+  transform: scale(0);
+}
+
+#button-up:hover{
+  transform: scale(1.1);
+  border-color: rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+
+
 .btnPpal {
   background: #7acc2d !important;
   font-family: 'Montserrat', sans-serif;
@@ -109,9 +145,25 @@ body {
 
 
 .menu {
+  display: flexbox;
+
+  z-index: 999;
+  position: fixed;
+  background: rgb(25, 11, 65);
+  top: 0;
+  left: 0;
+  width: 100%;
+ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s ease;
+
+
+  position: fixed;
   background: #219cca;
   border-left: 10px solid #fff;
-  box-shadow: 0 8px 10px rgba(0,0,0,0.5);
+  /*box-shadow: 0 8px 10px rgba(0,0,0,0.5); */
 }
 
 .menu ul {
@@ -221,22 +273,20 @@ body {
   font-family: "Flaticon";
 }
 .posts {
+  
+  width: auto;
   padding: 0.8em;
   margin: 0px;
   text-align: center;
 }
 .posts .post {
   background: #fff;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   box-shadow: 10px 9px 25px -1px rgba(0,0,0,0.75);
   display: block;
   margin-bottom: 1.5em;
   margin-right: 1.5em;
   width: 100%;
-}
-.posts .post .post-calificacion {
-  text-align: center;
-  padding: 0.5em;
 }
 .posts .post .post-calificacion .post-estrellita-vacia {
   text-decoration: none;
@@ -269,14 +319,8 @@ body {
   text-align: center;
   padding: 0 0.5em;
 }
-.posts .post .post-video iframe {
-  width: 100%;
-  height: 300px;
-}
-.posts .post .post-video .post-imagen-video {
-  width: 100%;
-  height: 300px;
-}
+
+
 .posts .post .post-descripcion {
   text-align: center;
   background: #eee;
@@ -433,7 +477,7 @@ body {
     color: #000;
   }
   .posts .post .post-descripcion {
-    height: 120px;
+    height: 200px;
   }
   .footer .contenedor-footer {
     display: flex;

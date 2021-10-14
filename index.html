@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="css/spiner.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/aspecto.css">
+    <link rel="stylesheet" href="css/btnIrArriba.css">
+    <link rel="stylesheet" href="css/estilo_areatxt.css">
+    <link rel="stylesheet" href="css/btn_publicacion.css">
     <!--endbuild-->
     <link rel="manifest" href="manifest.json">
-
-
 </head>
-
 <body class="hidden">
     <div class="spinner" id="onload">
         <div class="loader">
@@ -29,6 +29,26 @@
             <div></div>
         </div>
     </div>
+    <nav class="menu">
+        <ul>
+            <li><a id="btnTodoPost">Todos los Posts</a></li>
+            <li><a id="btnMisPost">Mis Posts</a></li>
+            <li><a id="btnModalPost">Realiza un Post</a></li>
+            <li><a href="index.html#footer">Contactenos</a></li>
+            <li><a href="index.html#footer">Revista Digital</a></li>
+        </ul>
+        <!-- buscador para cada post -->
+        <div class="form-group">
+            <!-- en la parte de la clase agregamos is-valid o is-invalid para marcar un error solo se le agrega la maenra -->
+            <input type="text" placeholder="Ingrese la palabra a buscar" class="form-control is-invalid" id="inputValid">
+            <input type="image" src="./icons/search-solid.svg" alt="Buscador" id="logobuscar">
+        </div>
+    </nav>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
     <header class="headerppal">
         <figure class="header-logotipo">
             <img src="https://i.ibb.co/nCtbLkv/logo.jpg" alt="Blog Logotipo">
@@ -44,42 +64,56 @@
             </figure>
 
     </header>
-    <nav class="menu">
-        <ul>
-            <li><a id="btnTodoPost">Todos los Posts</a></li>
-            <li><a id="btnMisPost">Mis Posts</a></li>
-            <li><a id="btnModalPost">Realiza un Post</a></li>
-            <li><a href="index.html#footer">Contactenos</a></li>
-            <li><a href="index.html#footer">Revista Digital</a></li>
-        </ul>
-    </nav>
+   
+    
+    <!-- 
     <h4 id="tituloPost" class="titulo-posts">
         Comunidad
     </h4>
-    <div class="slider">
-        <ul>
-            <li><img src="https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-                    alt=""></li>
-            <li><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                    alt=""></li>
-            <li><img src="imagenes/libro3.jpg" alt=""></li>
-            <li><img src="imagenes/libro4.jpg" alt=""></li>
-        </ul>
-    </div>
+-->
 
-    <!-- buscador para cada post -->
-    <div class="form-group">
-        <!-- en la parte de la clase agregamos is-valid o is-invalid para marcar un error solo se le agrega la maenra -->
-        <input type="text" placeholder="Ingrese la palabra a buscar" class="form-control is-invalid" id="inputValid">
-        <input type="image" src="./icons/search-solid.svg" alt="Buscador" id="logobuscar">
-    </div>
-    
+<!--Boton de ir hacia arriba-->
+<div id="button-up">
+    <i class="fas fa-chevron-up"></i>
+</div>
+    <section>
+        <div class="container-category">
+            <label for="A">A</label>
+            <label for="B">B</label>
+            <label for="C">C</label>
+            <label for="D">D</label>
+            <label for="E">E</label>
+            <label for="F">F</label>
+            <label for="G">G</label>
+            <label for="H">H</label>
+            <label for="I">I</label>
+            <label for="J">J</label>
+            <label for="K">K</label>
+            <label for="L">L</label>
+            <label for="M">M</label>
+            <label for="N">N</label>
+            <label for="O">O</label>
+            <label for="P">P</label>
+            <label for="Q">Q</label>
+            <label for="R">R</label>
+            <label for="S">S</label>
+            <label for="T">T</label>
+            <label for="U">U</label>
+            <label for="V">V</label>
+            <label for="W">W</label>
+            <label for="X">X</label>
+            <label for="Y">Y</label>
+            <label for="Z">Z</label>
 
-
+        </div>
+    </section>
 
     <section class="posts" id="posts">
-        
+
     </section>
+
+
+
     <footer class="footer" id="footer">
 
         <div class="contenedor-footer">
@@ -92,9 +126,7 @@
                 <p class="realizadopor"><strong>Programadores desarrollando</strong></p>
                 <p class="realizadoclase"><strong>Ingenieria</strong></p>
                 <div class="logos-redes">
-                    <a class="logo-facebook" target="_blank" href="#"></a>
-                    <a class="logo-twitter" target="_blank" href="#"></a>
-                    <a class="logo-github" target="_blank" href="https://github.com/elmergustavo"></a>
+            
                 </div>
             </div>
 
@@ -328,16 +360,12 @@
                 </div>
             </div>
         </div>
-    <section id="allPosts">
+        <section id="allPosts">
 
-    </section>
+        </section>
 
 </body>
-<script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
@@ -353,12 +381,14 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js'></script>
 <script src="./script.js"></script>
 <script type="text/javascript" src="script.js"></script>
-
+<script type="text/javascript" src="nav.js"></script>
+<script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 <!-- srips de back end -->
 <script type="module" src="./JS/controladorEventos/postController.js"></script>
 <script type="module" src="./JS/firebase/credentials.js"></script>
 <script type="module" src="./JS/firebase/authentication.js"></script>
 <script type="module" src="./JS/publicaciones/publicacion.js"></script>
+
 
 <!-- spinner -->
 <script src="./JS/preloadweb/pre-loaded.js"></script>
