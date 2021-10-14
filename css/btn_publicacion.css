@@ -1,7 +1,11 @@
+.input-btn{
+    justify-items: center;
+}
+
 .edit-btn-post{
 
     padding: 10px 40px;
-    margin-top: 40px;
+    margin-top: 40px 40px;
     border: none;
     font-size: 14px;
     background: #46A2FD;

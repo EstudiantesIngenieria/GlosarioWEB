@@ -273,23 +273,22 @@ body {
   font-family: "Flaticon";
 }
 .posts {
+  
+  width: auto;
   padding: 0.8em;
   margin: 0px;
   text-align: center;
 }
 .posts .post {
   background: #fff;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   box-shadow: 10px 9px 25px -1px rgba(0,0,0,0.75);
   display: block;
   margin-bottom: 1.5em;
   margin-right: 1.5em;
   width: 100%;
 }
-.posts .post .post-calificacion {
-  text-align: center;
-  padding: 0.5em;
-}
+
 .posts .post .post-calificacion .post-estrellita-vacia {
   text-decoration: none;
 }
@@ -321,14 +320,8 @@ body {
   text-align: center;
   padding: 0 0.5em;
 }
-.posts .post .post-video iframe {
-  width: 100%;
-  height: 300px;
-}
-.posts .post .post-video .post-imagen-video {
-  width: 100%;
-  height: 300px;
-}
+
+
 .posts .post .post-descripcion {
   text-align: center;
   background: #eee;

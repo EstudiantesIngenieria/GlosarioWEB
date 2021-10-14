@@ -71,20 +71,10 @@ function obtenerPostTemplate(
           <div class="post-titulo">
               <h5 id="${id}">${titulo}</h5>
           </div>
-          <div class="post-calificacion">
-              <a class="post-estrellita-llena" href="*"></a>
-              <a class="post-estrellita-llena" href="*"></a>
-              <a class="post-estrellita-llena" href="*"></a>
-              <a class="post-estrellita-llena" href="*"></a>
-              <a class="post-estrellita-vacia" href="*"></a>
-          </div>
-          <div class="post-video">                
-              <img id="imgVideo" src='${imagenLink}' class="post-imagen-video" 
-                  alt="Imagen Video">     
-          </div>
-          <div class="post-videolink">
-              <a href="${videoLink}" target="blank">Ver Video</a>                            
-          </div>
+          
+
+          
+          
           <div class="post-descripcion">
               <textarea class = "txt_area_post" readonly="readonly">
                ${descripcion}
@@ -111,23 +101,11 @@ function obtenerPostTemplate(
               <div class="post-titulo">
                   <h5>${titulo}</h5>
               </div>
-              <div class="post-calificacion">
-                  <a class="post-estrellita-llena" href="*"></a>
-                  <a class="post-estrellita-llena" href="*"></a>
-                  <a class="post-estrellita-llena" href="*"></a>
-                  <a class="post-estrellita-llena" href="*"></a>
-                  <a class="post-estrellita-vacia" href="*"></a>
-              </div>
-              <div class="post-video">
-                  <iframe type="text/html" width="500" height="385" src='${videoLink}'
-                      frameborder="0"></iframe>
-                  </figure>
-              </div>
-              <div class="post-videolink">
-                  Video
-              </div>
-              <div class="post-descripcion" readonly="readonly">
-                  <textarea class = "txt_area_post">
+              
+
+
+              <div class="post-descripcion" >
+                  <textarea class = "txt_area_post" readonly="readonly">
                ${descripcion}
             </textarea>
               </div>
@@ -139,9 +117,9 @@ function obtenerPostTemplate(
                       <div class="col m6">
                           Autor: ${autor}
                       </div>
-                      <div>
-                        <input id="nombreContacto" type="button" value="Editar" />
-                        <input id="nombreContacto" type="button" value="Eliminar" />
+                      <div class="input-btn">
+                        <input class="edit-btn-post" id="nombreContacto" type="button" value="Editar" sytle="justify-items: center" />
+                        <input class="delete-btn-post" id="nombreContacto" type="button" value="Eliminar" />
                       </div>          
                   </div>
               </div>
