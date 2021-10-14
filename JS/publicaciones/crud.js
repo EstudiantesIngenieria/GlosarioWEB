@@ -2,6 +2,7 @@ import {
     db,
     collection,
     addDoc,
+    getDoc,
     deleteDoc, 
     updateDoc, 
     doc, 
@@ -14,8 +15,9 @@ import {
     getImgDownloadURL
 } from "../cloudStorage/uploadCloud.js";
 
+
 //function for add new doc in Firestore
-async function insertWord(author, title, desc, imgLink, vidLink, file){
+async function insertWord(title, desc, imgLink, vidLink, file){
     let imgURL = imgLink;
     //If there's a file to upload calls the function from uploadCloud.js
     if (imgLink!= null){
@@ -27,13 +29,14 @@ async function insertWord(author, title, desc, imgLink, vidLink, file){
     //if auth.currentUser is not null, then use addDoc with parameters
     if (signedIn) {
         let today = new Date();   
+        var date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
         const docRef = await addDoc(collection(db, "palabras"), {
-            autor: author,
+            autor: auth.currentUser.email,
             titulo: title,
             descripcion: desc,
             imagenLink: imgURL,
             videoLink: vidLink,
-            fechacreacion: today
+            fechacreacion: date
         });
         alert("Document written with ID: " + docRef.id);
     } else {
@@ -42,25 +45,45 @@ async function insertWord(author, title, desc, imgLink, vidLink, file){
 };
 
 async function deleteWord(id){
-    await deleteDoc(doc(db, "palabras", id));
+    //check if there is an user signed in
+    let signedIn = auth.currentUser;
+    //if auth.currentUser is not null, then use addDoc with parameters
+    if (signedIn) {
+        await deleteDoc(doc(db, "palabras", id));
+        alert("The document with ID: " + id + "has been erased");
+    } else {
+        alert('ERROR, Inicie sesión');
+    }
 }
 
-async function editWord(id, editor, title, desc, imgLink, vidLink){
-    var today = new Date();
-    await updateDoc(doc(db, "Glosario", id), {
-        titulo: title,
-        descripcion: desc,
-        imagenLink: imgLink,
-        videoLink: vidLink,
-        fechacreacion: today,
-        editores: arrayUnion({
-            editor: editor,
-            fechadicion: today
-        })
-    });
+async function editWord(id, title, desc, imgLink, vidLink){
+    //check if there is an user signed in
+    let signedIn = auth.currentUser;
+    //if auth.currentUser is not null, then use addDoc with parameters
+    if (signedIn) {
+        let today = new Date();   
+        var date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+        await updateDoc(doc(db, "palabras", id), {
+            titulo: title,
+            descripcion: desc,
+            videoLink: vidLink,
+            editores: arrayUnion({
+                editor: auth.currentUser.email,
+                fechadicion: date
+            })
+        });
+    } else {
+        alert('ERROR, Inicie sesión');
+    }
     
-}
+};
+
+async function getWord(id){
+    const docRef = doc(db, "palabras", id);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
+};
 
 export {
-    insertWord, deleteWord
+    insertWord, deleteWord, getWord
 }

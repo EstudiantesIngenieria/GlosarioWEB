@@ -1,4 +1,4 @@
-import { getApps } from "../firebase/credentials.js";
+import { doc, getApps } from "../firebase/credentials.js";
 import {
   accesoCorreo,
   registroCorreo,
@@ -8,7 +8,7 @@ import {
   verifica,
 } from "../firebase/authentication.js";
 import { crearPost, showPosts} from "../publicaciones/publicacion.js";
-import { insertWord, deleteWord } from "../publicaciones/crud.js"
+import { insertWord, deleteWord, getWord } from "../publicaciones/crud.js"
 import { uploadImg } from "../cloudStorage/uploadCloud.js"
 import { arreglo } from "../search/buscador.js"
 
@@ -65,17 +65,24 @@ $('#btnRegistroPost').click(function (e) {
   //check if user selected a file
   if (typeof file !== "undefined") {
     //call the uploadImg function and insertWord function
-    insertWord('Author', postTitle, postDesc, file.name, postVidLink, file);
+    insertWord(postTitle, postDesc, file.name, postVidLink, file);
   } else {
     //only call the insertWord function
-    insertWord('Author', postTitle, postDesc, null, postVidLink, null);
+    insertWord(postTitle, postDesc, null, postVidLink, null);
   }
 });
 
-$('#delete-btn-post').click(function(e) {
+$(document).on('click', '.delete-btn-post', function(e) {
+  deleteWord(this.id);
+});
+
+$(document).on('click', '.edit-btn-post', async function(e) {
   e.preventDefault();
-  console.log("Funcionando");
-  // deleteWord(e.target.id);
+  document.getElementById("popup-1").classList.toggle("active");
+  let promise = await getWord(this.id);
+  document.getElementById("tituloNewPost").value = promise.titulo;
+  const postDesc = document.getElementById("descripcionNewPost").value = promise.descripcion;
+  const postVidLink = document.getElementById("linkVideoNewPost").value = promise.videoLink;
 });
 
 $("#btnMisPost").click(function (e) { 

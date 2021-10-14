@@ -8,6 +8,7 @@ import { getFirestore,
   //FIRESTORE
   collection,
   addDoc,
+  getDoc,
   getDocs,
   deleteDoc, 
   updateDoc, 
@@ -74,6 +75,7 @@ export {
   //firestore
   collection,
   addDoc,
+  getDoc,
   getDocs,
   deleteDoc, 
   updateDoc, 

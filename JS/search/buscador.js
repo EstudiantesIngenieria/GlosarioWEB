@@ -18,7 +18,7 @@ obtener_palabras();
 
 const filtrar = () => {
   $('.post').remove();
-
+  obtener_palabras();
   const textoIngresado = formulario.value.toLowerCase();
 
   arreglo.forEach((obj) => {
@@ -69,7 +69,7 @@ function obtenerPostTemplate(
   if (imagenLink) {
     return `<article class="post">
           <div class="post-titulo">
-              <h5 id="${id}">${titulo}</h5>
+              <h5>${titulo}</h5>
           </div>
           <div class="post-calificacion">
               <a class="post-estrellita-llena" href="*"></a>
@@ -97,8 +97,8 @@ function obtenerPostTemplate(
                       Autor: ${autor}
                   </div>
                   <div>
-                    <input id="edit-btn-post" type="button" value="Editar" />
-                    <input id="delete-btn-post" type="button" value="Eliminar" />
+                    <input id="${id}" class="edit-btn-post" type="button" value="Editar" />
+                    <input id="${id}" class="delete-btn-post" type="submit" value="Eliminar" />
                   </div>        
               </div>
           </div>
@@ -136,8 +136,8 @@ function obtenerPostTemplate(
                           Autor: ${autor}
                       </div>
                       <div>
-                        <input id="nombreContacto" type="button" value="Editar" />
-                        <input id="nombreContacto" type="button" value="Eliminar" />
+                        <input id="${id}" class="edit-btn-post"  type="button" value="Editar" />
+                        <input id="${id}" class="delete-btn-post" type="submit" value="Eliminar" />
                       </div>          
                   </div>
               </div>
