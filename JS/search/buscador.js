@@ -104,7 +104,7 @@ function obtenerPostTemplate(
           </div>
       </article>`;
   }
-
+  
   return `<article class="post">
               <div class="post-titulo">
                   <h5>${titulo}</h5>
