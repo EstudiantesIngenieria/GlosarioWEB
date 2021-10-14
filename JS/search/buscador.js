@@ -99,8 +99,8 @@ function obtenerPostTemplate(
                       Autor: ${autor}
                   </div>
                   <div>
-                    <input id="edit-btn-post" type="button" value="Editar" />
-                    <input id="delete-btn-post" type="button" value="Eliminar" />
+                    <input class="edit-btn-post" type="button" value="Editar" />
+                    <input class="delete-btn-post" type="button" value="Eliminar" />
                   </div>        
               </div>
           </div>
