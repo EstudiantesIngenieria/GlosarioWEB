@@ -485,7 +485,7 @@ body {
     color: #000;
   }
   .posts .post .post-descripcion {
-    height: 500px;
+    height: 200px;
   }
   .footer .contenedor-footer {
     display: flex;

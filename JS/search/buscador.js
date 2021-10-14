@@ -86,7 +86,9 @@ function obtenerPostTemplate(
               <a href="${videoLink}" target="blank">Ver Video</a>                            
           </div>
           <div class="post-descripcion">
-              <p>${descripcion}</p>
+              <textarea class = "txt_area_post">
+               ${descripcion}
+            </textarea>
           </div>
           <div class="post-footer container">
               <div class="row">
@@ -125,7 +127,9 @@ function obtenerPostTemplate(
                   Video
               </div>
               <div class="post-descripcion">
-                  <p>${descripcion}</p>
+                  <textarea class = "txt_area_post">
+               ${descripcion}
+            </textarea>
               </div>
               <div class="post-footer container">
                   <div class="row">
