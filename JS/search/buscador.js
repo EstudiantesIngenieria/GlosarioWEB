@@ -86,7 +86,7 @@ function obtenerPostTemplate(
               <a href="${videoLink}" target="blank">Ver Video</a>                            
           </div>
           <div class="post-descripcion">
-              <textarea class = "txt_area_post">
+              <textarea class = "txt_area_post" readonly="readonly">
                ${descripcion}
             </textarea>
           </div>
@@ -126,7 +126,7 @@ function obtenerPostTemplate(
               <div class="post-videolink">
                   Video
               </div>
-              <div class="post-descripcion">
+              <div class="post-descripcion" readonly="readonly">
                   <textarea class = "txt_area_post">
                ${descripcion}
             </textarea>
