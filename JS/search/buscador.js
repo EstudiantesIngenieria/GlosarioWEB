@@ -3,63 +3,47 @@ import { db, collection, getDocs } from "../firebase/credentials.js";
 const formulario = document.querySelector("#inputValid");
 const resultado = document.querySelector(".posts");
 
-let arreglo = [];
 async function obtener_palabras() {
+  $(".post").remove();
   const querySnapshot = await getDocs(collection(db, "palabras"));
   querySnapshot.forEach((doc) => {
     const wordId = doc.data();
-    //console.log(wordId)
-    let joinObject = Object.assign(wordId, { id: doc.id });
-    arreglo.push(joinObject);
-    console.log(arreglo);
+    let joinObject = Object.assign(wordId, {id: doc.id})
+    const textoIngresado = formulario.value.toLowerCase();
+    let nombre =
+    joinObject.descripcion.toLowerCase() + ". " + wordId.titulo.toLowerCase();
+    if (nombre.indexOf(textoIngresado) !== -1) {
+      let html = obtenerPostTemplate(
+        joinObject.id,
+        joinObject.autor,
+        joinObject.titulo,
+        joinObject.descripcion,
+        joinObject.fechacreacion
+      );
+      console.log('FECHA -> ', joinObject.fechacreacion)
+      $(".posts").append(html);
+    }
   });
 }
 obtener_palabras();
 
-const filtrar = () => {
-  $(".post").remove();
-  obtener_palabras();
-  const textoIngresado = formulario.value.toLowerCase();
-
-  arreglo.forEach((obj) => {
-    let nombre =
-      obj.descripcion.toLowerCase() +
-      ". " +
-      obj.titulo.toLowerCase() +
-      ". " +
-      obj.autor.toLowerCase();
-    console.log(nombre);
-    if (nombre.indexOf(textoIngresado) !== -1) {
-      let html = obtenerPostTemplate(
-        obj.id,
-        obj.autor,
-        obj.titulo,
-        obj.descripcion,
-        obj.videoLink,
-        obj.imagenLink,
-        obj.fechaCreacion
-      );
-      $(".posts").append(html);
-    }
-  });
-  if (resultado.innerHTML === " ") {
-    resultado.innerHTML += `
-    <h1>NO HAY RESULTADOS</h1>
-    `;
-  }
-};
 
 $("#logobuscar").click(function (e) {
   e.preventDefault();
-  filtrar();
+  obtener_palabras();
 });
 
 $("#inputValid").keyup(function (e) {
   // Number 13 is the "Enter" key on the keyboard
   if (e.keyCode === 13) {
     e.preventDefault();
-    filtrar();
+    obtener_palabras();
   }
+});
+
+$("#btnTodoPost").click(function (e) {
+  $(".post").remove();
+  obtener_palabras();
 });
 
 function obtenerPostTemplate(
@@ -67,19 +51,12 @@ function obtenerPostTemplate(
   autor,
   titulo,
   descripcion,
-  videoLink,
-  imagenLink,
   fecha
 ) {
-  if (imagenLink) {
     return `<article class="post">
           <div class="post-titulo">
               <h5 id="${id}">${titulo}</h5>
           </div>
-          
-
-          
-          
           <div class="post-descripcion">
               <textarea class = "txt_area_post" readonly="readonly">
                ${descripcion}
@@ -100,34 +77,5 @@ function obtenerPostTemplate(
               </div>
           </div>
       </article>`;
-  }
-
-  return `<article class="post">
-              <div class="post-titulo">
-                  <h5>${titulo}</h5>
-              </div>
-              
-
-
-              <div class="post-descripcion" >
-                  <textarea class = "txt_area_post" readonly="readonly">
-               ${descripcion}
-            </textarea>
-              </div>
-              <div class="post-footer container">
-                  <div class="row">
-                      <div class="col m6">
-                          Fecha: ${fecha}
-                      </div>
-                      <div class="col m6">
-                          Autor: ${autor}
-                      </div>
-                      <div class="input-btn">
-                        <input class="edit-btn-post" id="nombreContacto" type="button" value="Editar" sytle="justify-items: center" />
-                        <input class="delete-btn-post" id="nombreContacto" type="button" value="Eliminar" />
-                      </div>          
-                  </div>
-              </div>
-          </article>`;
 }
-export { arreglo };
+export { obtener_palabras };

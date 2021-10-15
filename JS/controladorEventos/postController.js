@@ -8,9 +8,11 @@ import {
   verifica,
 } from "../firebase/authentication.js";
 import { crearPost, showPosts} from "../publicaciones/publicacion.js";
-import { insertWord, deleteWord, getWord } from "../publicaciones/crud.js"
+import { insertWord, deleteWord, editWord, getWord } from "../publicaciones/crud.js"
 import { uploadImg } from "../cloudStorage/uploadCloud.js"
-import { arreglo } from "../search/buscador.js"
+import { obtener_palabras } from "../search/buscador.js";
+
+var idEdit;
 
 $(document).ready(function () {
   verifica();
@@ -31,24 +33,28 @@ $(".overlay").click(function (e) {
 $("#btnModalPost").click(function (e) {
   e.preventDefault();
   // singouts();
-  document.getElementById("popup-1").classList.toggle("active");
-  
+  console.log('modal open')
+  $('#popup-1').toggleClass('active');
 });
 //close popup button
 $('.close-btn').click(function (e) { 
-  e.preventDefault();
   $('#popup-1').toggleClass('active');
 });
 
 
-$("#btnTodoPost").click(function (e) {
-  let final
-  e.preventDefault()
-  console.log("ya entre")
-  const $sectionPosts = document.getElementById("posts")
-  showPosts().then(value => $sectionPosts.innerHTML= value.replace('undefined', ''))
-  showPosts().then(val => console.log(val.replace('undefined', '')))
+$('.close-btn2').click(function (e) { 
+  $('#popup-2').toggleClass('active');
+  obtener_palabras();
 });
+
+
+// $("#btnTodoPost").click(function (e) {
+//   let final
+//   e.preventDefault()
+//   const $sectionPosts = document.getElementById("posts")
+//   showPosts().then(value => $sectionPosts.innerHTML= value.replace('undefined', ''))
+//   showPosts().then(val => console.log(val.replace('undefined', '')))
+// });
 
 //Submit new post when btnRegistroPost is clicked
 $('#btnRegistroPost').click(function (e) { 
@@ -72,17 +78,32 @@ $('#btnRegistroPost').click(function (e) {
   }
 });
 
+$('#btnRegistroEditPost').click(function (e) { 
+  e.preventDefault();
+  console.log("funcionando boton editar");
+  //get the value from the title input
+  const postTitle = document.getElementById("tituloEditPost").value;
+  //get the value from the description input
+  const postDesc = document.getElementById("descripcionEditPost").value;
+  //get the value from the video link input
+  // const postVidLink = document.getElementById("linkVideoEditPost").value;
+  editWord(idEdit, postTitle, postDesc, null, null);
+  idEdit = "";
+});
+
 $(document).on('click', '.delete-btn-post', function(e) {
+  console.log("Editar");
   deleteWord(this.id);
 });
 
 $(document).on('click', '.edit-btn-post', async function(e) {
-  e.preventDefault();
-  document.getElementById("popup-1").classList.toggle("active");
+  $('#popup-2').toggleClass('active');
+  console.log("Editar");
+  // document.getElementById("popup-2").classList.toggle("active");
   let promise = await getWord(this.id);
-  document.getElementById("tituloNewPost").value = promise.titulo;
-  const postDesc = document.getElementById("descripcionNewPost").value = promise.descripcion;
-  const postVidLink = document.getElementById("linkVideoNewPost").value = promise.videoLink;
+  document.getElementById("tituloEditPost").value = promise.titulo;
+  const postDesc = document.getElementById("descripcionEditPost").value = promise.descripcion;
+  idEdit = this.id;
 });
 
 $("#btnMisPost").click(function (e) { 

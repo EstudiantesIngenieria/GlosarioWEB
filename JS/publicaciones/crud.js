@@ -14,6 +14,7 @@ import {
     uploadImg,
     getImgDownloadURL
 } from "../cloudStorage/uploadCloud.js";
+import { obtener_palabras } from "../search/buscador.js";
 
 
 //function for add new doc in Firestore
@@ -27,15 +28,15 @@ async function insertWord(title, desc, imgLink, vidLink, file){
     //check if there is an user signed in
     let signedIn = auth.currentUser;
     //if auth.currentUser is not null, then use addDoc with parameters
-    if (signedIn) {
+    if (!signedIn) {
         let today = new Date();   
         var date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
         const docRef = await addDoc(collection(db, "palabras"), {
-            autor: auth.currentUser.email,
+            //autor: auth.currentUser,
             titulo: title,
             descripcion: desc,
-            imagenLink: imgURL,
-            videoLink: vidLink,
+            // imagenLink: imgURL,
+            // videoLink: vidLink,
             fechacreacion: date
         });
         alert("Document written with ID: " + docRef.id);
@@ -48,9 +49,10 @@ async function deleteWord(id){
     //check if there is an user signed in
     let signedIn = auth.currentUser;
     //if auth.currentUser is not null, then use addDoc with parameters
-    if (signedIn) {
+    if (!signedIn) {
         await deleteDoc(doc(db, "palabras", id));
-        alert("The document with ID: " + id + "has been erased");
+        alert("The document with ID: " + id + "has been deleted");
+        obtener_palabras();
     } else {
         alert('ERROR, Inicie sesión');
     }
@@ -60,18 +62,19 @@ async function editWord(id, title, desc, imgLink, vidLink){
     //check if there is an user signed in
     let signedIn = auth.currentUser;
     //if auth.currentUser is not null, then use addDoc with parameters
-    if (signedIn) {
+    if (!signedIn) {
         let today = new Date();   
         var date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
         await updateDoc(doc(db, "palabras", id), {
             titulo: title,
             descripcion: desc,
-            videoLink: vidLink,
+            // videoLink: vidLink,
             editores: arrayUnion({
-                editor: auth.currentUser.email,
+                //editor: auth.currentUser,
                 fechadicion: date
             })
         });
+        alert("The document with ID: " + id + "has been edited");
     } else {
         alert('ERROR, Inicie sesión');
     }
@@ -85,5 +88,5 @@ async function getWord(id){
 };
 
 export {
-    insertWord, deleteWord, getWord
+    insertWord, deleteWord, editWord, getWord
 }

@@ -20,15 +20,16 @@
     <!--endbuild-->
     <link rel="manifest" href="manifest.json">
 </head>
+
 <body class="hidden">
-    <div class="spinner" id="onload">
+    <!-- <div class="spinner" id="onload">
         <div class="loader">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <nav class="menu">
         <ul>
             <li><a id="btnTodoPost">Todos los Posts</a></li>
@@ -40,7 +41,8 @@
         <!-- buscador para cada post -->
         <div class="form-group">
             <!-- en la parte de la clase agregamos is-valid o is-invalid para marcar un error solo se le agrega la maenra -->
-            <input type="text" placeholder="Ingrese la palabra a buscar" class="form-control is-invalid" id="inputValid">
+            <input type="text" placeholder="Ingrese la palabra a buscar" class="form-control is-invalid"
+                id="inputValid">
             <input type="image" src="./icons/search-solid.svg" alt="Buscador" id="logobuscar">
         </div>
     </nav>
@@ -64,20 +66,22 @@
             </figure>
 
     </header>
-   
-    
+
+
     <!-- 
     <h4 id="tituloPost" class="titulo-posts">
         Comunidad
     </h4>
 -->
 
-<!--Boton de ir hacia arriba-->
-<div id="button-up">
-    <i class="fas fa-chevron-up"></i>
-</div>
+    <!--Boton de ir hacia arriba-->
+    <div id="button-up">
+        <i class="fas fa-chevron-up"></i>
+    </div>
     <section>
+        <h3 class="indice">Índice</h3>
         <div class="container-category">
+            
             <label for="A">A</label>
             <label for="B">B</label>
             <label for="C">C</label>
@@ -108,6 +112,9 @@
         </div>
     </section>
 
+
+
+
     <section class="posts" id="posts">
 
     </section>
@@ -126,7 +133,7 @@
                 <p class="realizadopor"><strong>Programadores desarrollando</strong></p>
                 <p class="realizadoclase"><strong>Ingenieria</strong></p>
                 <div class="logos-redes">
-            
+
                 </div>
             </div>
 
@@ -162,25 +169,7 @@
                     <label for="comentariosContacto">Comentarios:</label>
                     <textarea id="comentariosContacto" placeholder="Escribe tu comentario" cols="30" rows="6"
                         required></textarea>
-
-
-                    <button class="button">
-                        <span class="default">Enviar</span>
-                        <span class="success">
-                            <svg viewBox="0 0 16 16">
-                                <polyline points="3.75 9 7 12 13 5" />
-                            </svg>
-                            Enviado!
-                        </span>
-
-                        <div class="plane">
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </div>
-                    </button>
-
-
-
+                        <input type="submit" class="waves-effect waves-light btn btnPpal" value="Enviar" />
                     <!-- <input type="submit" class="waves-effect waves-light btn btnPpal" value="Enviar" /> -->
                 </div>
             </div>
@@ -269,48 +258,6 @@
         </div>
     </div>
 
-    <!-- Modal Post -->
-    <!-- <div id="modalPost" class="modal modal-registro">
-        <div class="modal-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12 m6 registro-bienvenida">
-                        <h4>Realiza un Post</h4>
-                        <div class="registro-bienvenida-texto">
-                            Comparte un video interesante para la comunidad
-                        </div>
-                        <span>Comparte ahora</span>
-                    </div>
-                    <div class="col s12 m6 registro-formulario">
-                        <div class="input-field">
-                            <input id="tituloNewPost" type="text" maxlength="30" data-length="30" required />
-                            <label for="tituloNewPost">Titulo:</label>
-                        </div>
-                        <div class="input-field">
-                            <textarea id="descripcionNewPost" type="text" maxlength="200" data-length="200"
-                                class="materialize-textarea" required></textarea>
-                            <label for="descripcionNewPost">Descripción:</label>
-                        </div>
-                        <div class="input-field">
-                            <input id="linkVideoNewPost" type="text" required />
-                            <label for="linkVideoNewPost">Enlace del video:</label>
-                        </div>
-                        <div class="progress-panel">
-                            <label for="btnUploadFile">Imagen:</label>
-                            <input type="file" value="upload" id="btnUploadFile" />
-                            <div class="progress">
-                                <div class="determinate" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="div-btnInicioSesion">
-                            <a id="btnRegistroPost" class="btn waves-effect waves-light">Crear Post<i
-                                    class="material-icons left">create</i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
 
     <!-- nuevo MODAL POST2 -->
@@ -333,7 +280,7 @@
                             <label for="tituloNewPost">Titulo:</label>
                         </div>
                         <div class="input-field">
-                            <textarea id="descripcionNewPost" type="text" maxlength="200" data-length="200"
+                            <textarea id="descripcionNewPost" type="text" maxlength="600" data-length="600"
                                 class="materialize-textarea" required></textarea>
                             <label for="descripcionNewPost">Descripción:</label>
                         </div>
@@ -360,9 +307,42 @@
                 </div>
             </div>
         </div>
-        <section id="allPosts">
 
-        </section>
+        <!-- nuevo MODAL POST2 -->
+        <div class="editarpop" id="popup-2">
+            <div class="overlay2"></div>
+            <div class="content2">
+                <div class="close-btn2">×</div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 registro-bienvenida">
+                            <h4>Edita tu publicacion</h4>
+                            <div class="registro-bienvenida-texto">
+                                Puedes editar de nuevo, si has cometido algun error.
+                            </div>
+                            <span>Corrigelo ahora.</span>
+                        </div>
+                        <div class="col s12 m6 registro-formulario">
+                            <div class="input-field">
+                                <input id="tituloEditPost" type="text" maxlength="30" data-length="30" required />
+                                <label for="tituloNewPost">Titulo:</label>
+                            </div>
+                            <div class="input-field">
+                                <textarea id="descripcionEditPost" type="text" maxlength="600" data-length="600"
+                                    class="materialize-textarea" required></textarea>
+                                <label for="descripcionPost">Descripción:</label>
+                            </div>
+                            <div class="div-btnInicioSesion">
+                                <a id="btnRegistroEditPost" class="btn waves-effect waves-light">Aceptar<i
+                                        class="material-icons left">create</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section id="allPosts">
+
+            </section>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

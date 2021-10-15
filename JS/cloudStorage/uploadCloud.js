@@ -11,7 +11,7 @@ async function uploadImg(reference, file){
     //check if there is an user signed in
     let signedIn = auth.currentUser;
     //if auth.currentUser is not null, then upload the file obj with uploadBytes in Imagenes/
-    if (signedIn) {
+    if (!signedIn) {
         const usersCollection = ref(strg, `Imagenes/${reference}`);
         await uploadBytes(usersCollection, file);
         alert('Image uploaded succesfuly');

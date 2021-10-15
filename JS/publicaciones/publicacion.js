@@ -43,17 +43,50 @@ async function showPosts() {
     let frontHTML
     frontHTML = `
     <div class="showPost${doc.data().titulo.split(" ").join("")}">
-      <h4 id="tituloPost" class="titulosPosts">${doc.data().titulo}</h4>
-      <p id="descripcionPost" class="descripcionPosts">${doc.data().descripcion}</p>
-      <img src="${doc.data().imagenLink}" alt="Imagen Post ${doc.data().titulo}" id="img${doc.data().titulo}" class="imagenesPosts">
-      <a href="${doc.data().videoLink}" target="blank" class="videosPosts" id="video${doc.data().titulo}">Ver video</a>
-      <h2 class="autorPosts" id="autorDe${doc.data().titulo}">Autor: ${doc.data().autor}</h2>
-      <h2 id="fechaDe${doc.data().titulo}" class="fechaPosts">Fecha Publicacion ${doc.data().fecha}</h2>
-      <div>
-        <input id="${doc.id}" class="edit-btn-post" type="button" value="Editar" />
-        <input id="${doc.id}" class="delete-btn-post" type="button" value="Eliminar" />
+
+    <h4 id="tituloPost" class="titulosPosts">${doc.data().titulo}</h4>
+    
+    <p id="descripcionPost" class="descripcionPosts">${doc.data().descripcion}</p>
+
+    <img src="${doc.data().imagenLink}" alt="Imagen Post ${doc.data().titulo}" id="img${doc.data().titulo}" class="imagenesPosts">
+    
+    <a href="${doc.data().videoLink}" target="blank" class="videosPosts" id="video${doc.data().titulo}">Ver video</a>
+    
+    <h2 class="autorPosts" id="autorDe${doc.data().titulo}">Autor: ${doc.data().autor}</h2>
+    
+    <h2 id="fechaDe${doc.data().titulo}" class="fechaPosts">Fecha Publicacion ${doc.data().fecha}</h2>
+    
+    <div>
+      <input id="${doc.id}" class="edit-btn-post" type="button" value="Editar" />
+      
+      <input id="${doc.id}" class="delete-btn-post" type="button" value="Eliminar" />
+    
       </div> 
-    </div>
+  </div>
+    <article class="post">
+              <div class="post-titulo">
+                  <h5>${doc.data().titulo.split(" ").join("")}</h5>
+              </div>
+              <div class="post-descripcion" >
+                  <textarea class = "txt_area_post" readonly="readonly">
+               ${descripcion}
+            </textarea>
+              </div>
+              <div class="post-footer container">
+                  <div class="row">
+                      <div class="col m6">
+                          Fecha: ${fecha}
+                      </div>
+                      <div class="col m6">
+                          Autor: ${autor}
+                      </div>
+                      <div class="input-btn">
+                        <input class="edit-btn-post" id="nombreContacto" type="button" value="Editar" sytle="justify-items: center" />
+                        <input class="delete-btn-post" id="nombreContacto" type="button" value="Eliminar" />
+                      </div>          
+                  </div>
+              </div>
+          </article>
     `
     finalHTMLPosts = finalHTMLPosts + frontHTML 
   });
