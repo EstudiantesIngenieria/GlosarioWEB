@@ -2,8 +2,9 @@
     justify-items: center;
 }
 
-.edit-btn-post{
-
+.buttons{
+    display: flex;
+    justify-content: center;
     padding: 10px 40px;
     margin-top: 40px 40px;
     border: none;
@@ -18,19 +19,17 @@
 
 }
 
-.delete-btn-post{
-
-    padding: 10px 40px;
-    margin-top: 40px;
+.btn-sec{
+    display: flex;
+    justify-content: left;
+    margin: auto;
     border: none;
     font-size: 14px;
-    background: #46A2FD;
+    background: #f5f7f8;
     font-weight: 600;
     cursor: pointer;
-    color: white;
+    color: black;
     /*Outline, quita el borde negro del boton, luego de darle click*/
     outline: none;
     border-radius: 5px;
-
-
 }

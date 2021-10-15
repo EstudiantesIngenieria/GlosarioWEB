@@ -64,15 +64,15 @@ function obtenerPostTemplate(
           </div>
           <div class="post-footer container">
               <div class="row">
-                  <div class="col m6">
+                  <div class="datos-post" class="col m6">
                       Fecha: ${fecha}
                   </div>
-                  <div class="col m6">
+                  <div class="datos-post" class="col m6">
                       Autor: ${autor}
                   </div>
-                  <div>
-                    <input id="${id}" class="edit-btn-post" type="button" value="Editar" />
-                    <input id="${id}" class="delete-btn-post" type="submit" value="Eliminar" />
+                  <div class="buttons">
+                    <input id="${id}" class="btn-sec btn-pop" type="button" value="Editar" />
+                    <input id="${id}" class= "btn-sec delete-btn-post" type="submit" value="Eliminar" />
                   </div>        
               </div>
           </div>

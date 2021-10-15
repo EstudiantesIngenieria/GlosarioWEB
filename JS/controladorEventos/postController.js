@@ -96,7 +96,7 @@ $(document).on('click', '.delete-btn-post', function(e) {
   deleteWord(this.id);
 });
 
-$(document).on('click', '.edit-btn-post', async function(e) {
+$(document).on('click', '.btn-pop', async function(e) {
   $('#popup-2').toggleClass('active');
   console.log("Editar");
   // document.getElementById("popup-2").classList.toggle("active");
