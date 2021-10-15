@@ -81,7 +81,7 @@ async function showPosts() {
                           Autor: ${autor}
                       </div>
                       <div class="input-btn">
-                        <input class="edit-btn-post" id="nombreContacto" type="button" value="Editar" sytle="justify-items: center" />
+                        <input class="edit-btn-post" id="nombreContacto" type="button" value="Editar" sytle="justify-items: center;" />
                         <input class="delete-btn-post" id="nombreContacto" type="button" value="Eliminar" />
                       </div>          
                   </div>

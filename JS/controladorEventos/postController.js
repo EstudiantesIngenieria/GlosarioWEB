@@ -60,22 +60,23 @@ $('.close-btn2').click(function (e) {
 $('#btnRegistroPost').click(function (e) { 
   e.preventDefault();
   //get the file that's gonna be uploaded
-  const inpFile = document.getElementById("btnUploadFile");
-  const file = inpFile.files[0];
+  //const inpFile = document.getElementById("btnUploadFile");
+ // const file = inpFile.files[0];
   //get the value from the title input
   const postTitle = document.getElementById("tituloNewPost").value;
   //get the value from the description input
   const postDesc = document.getElementById("descripcionNewPost").value;
   //get the value from the video link input
-  const postVidLink = document.getElementById("linkVideoNewPost").value;
+ // const postVidLink = document.getElementById("linkVideoNewPost").value;
   //check if user selected a file
-  if (typeof file !== "undefined") {
+  insertWord(postTitle, postDesc);
+  //if (typeof file !== "undefined") {
     //call the uploadImg function and insertWord function
-    insertWord(postTitle, postDesc, file.name, postVidLink, file);
-  } else {
+   // insertWord(postTitle, postDesc);
+  //} else {
     //only call the insertWord function
-    insertWord(postTitle, postDesc, null, postVidLink, null);
-  }
+ //   insertWord(postTitle, postDesc);
+ // }
 });
 
 $('#btnRegistroEditPost').click(function (e) { 

@@ -235,8 +235,12 @@ button {
 
 
 /*  Css indice */
-h2{
+.indice{
+  font-family: 'Montserrat', sans-serif;
+  color: #126798;
+  text-align: center;
   justify-content: center;
+
 }
 
 .container-category{
