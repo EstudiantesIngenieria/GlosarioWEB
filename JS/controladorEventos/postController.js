@@ -4,8 +4,7 @@ import {
   registroCorreo,
   accesoGmail,
   singouts,
-  accesFaccebook,
-  verifica,
+  verificaSesion,
 } from "../firebase/authentication.js";
 import { crearPost, showPosts} from "../publicaciones/publicacion.js";
 import { insertWord, deleteWord, editWord, getWord } from "../publicaciones/crud.js"
@@ -15,7 +14,7 @@ import { obtener_palabras } from "../search/buscador.js";
 var idEdit;
 
 $(document).ready(function () {
-  verifica();
+  verificaSesion();
 });
 //click cerrar sesion 
 $('#btnCerrarSesion').click(function (e) { 
@@ -60,22 +59,23 @@ $('.close-btn2').click(function (e) {
 $('#btnRegistroPost').click(function (e) { 
   e.preventDefault();
   //get the file that's gonna be uploaded
-  const inpFile = document.getElementById("btnUploadFile");
-  const file = inpFile.files[0];
+  //const inpFile = document.getElementById("btnUploadFile");
+ // const file = inpFile.files[0];
   //get the value from the title input
   const postTitle = document.getElementById("tituloNewPost").value;
   //get the value from the description input
   const postDesc = document.getElementById("descripcionNewPost").value;
   //get the value from the video link input
-  const postVidLink = document.getElementById("linkVideoNewPost").value;
+ // const postVidLink = document.getElementById("linkVideoNewPost").value;
   //check if user selected a file
-  if (typeof file !== "undefined") {
+  insertWord(postTitle, postDesc);
+  //if (typeof file !== "undefined") {
     //call the uploadImg function and insertWord function
-    insertWord(postTitle, postDesc, file.name, postVidLink, file);
-  } else {
+   // insertWord(postTitle, postDesc);
+  //} else {
     //only call the insertWord function
-    insertWord(postTitle, postDesc, null, postVidLink, null);
-  }
+ //   insertWord(postTitle, postDesc);
+ // }
 });
 
 $('#btnRegistroEditPost').click(function (e) { 
@@ -96,7 +96,7 @@ $(document).on('click', '.delete-btn-post', function(e) {
   deleteWord(this.id);
 });
 
-$(document).on('click', '.edit-btn-post', async function(e) {
+$(document).on('click', '.btn-pop', async function(e) {
   $('#popup-2').toggleClass('active');
   console.log("Editar");
   // document.getElementById("popup-2").classList.toggle("active");
@@ -106,21 +106,24 @@ $(document).on('click', '.edit-btn-post', async function(e) {
   idEdit = this.id;
 });
 
+
+
+
+
 $("#btnMisPost").click(function (e) { 
   e.preventDefault();
   // crearPost('1', 'Acta de constitución', 'Documento en el que se encuentra de forma resumida los datos y componentes clave de la fase de iniciación del proyecto como lo pueden ser el Alcance, Objetivos o Stakeholders.', null, null)
 });
 
 $("#btnInicioSesion").click(function (e) {
-  e.preventDefault();
-  accesoCorreo("pepito2@gmail.com", "12345678");
+  //login
+  // accesoCorreo("pepito32@gmail.com", "12345678");
   // registroCorreo(
   //   "pepito3@gmail.com",
   //   "12345678",
   //   "Gustavo",
   //   "Tavo",
   //   "https://images.unsplash.com/photo-1633121919063-471d6534a2e1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1974&q=80"
-  // );
-  
-  //  accesFaccebook();
+  //  );
+  accesoGmail();
 });

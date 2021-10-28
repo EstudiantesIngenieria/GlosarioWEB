@@ -20,7 +20,6 @@ async function obtener_palabras() {
         joinObject.descripcion,
         joinObject.fechacreacion
       );
-      console.log('FECHA -> ', joinObject.fechacreacion)
       $(".posts").append(html);
     }
   });

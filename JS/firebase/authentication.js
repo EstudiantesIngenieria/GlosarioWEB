@@ -5,7 +5,6 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
-  FacebookAuthProvider,
   onAuthStateChanged,
   signOut,
 } from "../firebase/credentials.js";
@@ -18,15 +17,18 @@ function registroCorreo(email, password, nombre, apellido, url) {
         const nombres = `${nombre} ${apellido}`;
         updateProfiles(nombres, url);
         const user = userCredential.user
-        console.log(user)
+        console.log('entro')
+
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, " ", errorMessage);
+        if (errorCode == 'auth/email-already-in-use') {
+          alert('El correo electronico ya existe.  ' + errorMessage)
+        }
       });
   } else {
-    alert("las contrase;a tiene que ser mas de 8 caracteres");
+    alert("las contrase;a tiene que ser maximo de 8 caracteres");
   }
 }
 //actualiza la foto y el nombre
@@ -43,6 +45,8 @@ function updateProfiles(name, url) {
     });
 }
 
+
+//logearse con correo
 function accesoCorreo(email, password) {
   console.log(auth.currentUser);
   signInWithEmailAndPassword(auth, email, password)
@@ -55,11 +59,16 @@ function accesoCorreo(email, password) {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log("Codifo error : ", errorCode);
+      console.log("Codido error : ", errorCode);
       console.log("mensaje error: ", errorMessage);
+      if (errorCode === "auth/wrong-password") {
+        alert("Contraseña incorrecta");
+      } else if(errorCode === "auth/user-not-found") {
+        alert("Usuario no encontrado");
+      }
     });
 }
-
+//iniciar sesion con google
 function accesoGmail() {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
@@ -68,9 +77,12 @@ function accesoGmail() {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
-      const user = result.user;
+      const {displayName, email, photoURL} = result.user;
       const img = document.getElementById("avatar");
-      img.src = user.photoURL;
+      img.src = photoURL;
+      alert('Bienvenido ' + displayName);
+      console.log(photoURL)
+
     })
     .catch((error) => {
       // Handle Errors here.
@@ -80,25 +92,26 @@ function accesoGmail() {
       const email = error.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log('error code: ' + errorCode + ' message: ' + errorMessage)
       // ...
     });
 }
 
-function verifica() {
+function verificaSesion() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const img = document.getElementById("avatar");
       img.src = user.photoURL;
       $('#btnInicioSesion').hide();
       $('#btnCerrarSesion').show();
-      
+
     } else {
       console.log('si entro2')
       $('#btnCerrarSesion').hide();
     }
   });
 }
-
+//cerrar sesion 
 function singouts() {
   signOut(auth)
     .then(() => {
@@ -112,31 +125,5 @@ function singouts() {
     });
 }
 
-function accesFaccebook() {
-  const provider = new FacebookAuthProvider();
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // The signed-in user info.
-      const user = result.user;
-      console.log("entro fb");
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      const credential = FacebookAuthProvider.credentialFromResult(result);
-      const accessToken = credential.accessToken;
-      const img = document.getElementById("avatar");
-      img.src = user.photoURL;
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The AuthCredential type that was used.
-      const credential = FacebookAuthProvider.credentialFromError(error);
 
-      // ...
-    });
-}
-
-
-export { registroCorreo, accesoCorreo, accesoGmail, accesFaccebook, singouts, verifica};
+export { registroCorreo, accesoCorreo, accesoGmail, singouts, verificaSesion };
