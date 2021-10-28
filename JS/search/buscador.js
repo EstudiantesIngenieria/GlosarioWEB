@@ -28,6 +28,10 @@ async function obtener_palabras() {
 obtener_palabras();
 
 
+const d = document.createElement('div')
+
+
+
 $("#logobuscar").click(function (e) {
   e.preventDefault();
   obtener_palabras();
