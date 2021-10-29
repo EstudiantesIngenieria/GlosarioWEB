@@ -240,8 +240,11 @@ button {
   color: #126798;
   text-align: center;
   justify-content: center;
-
+  border: 2px black dotted;
+  border-radius: 5px;
+  padding: 10px;
 }
+
 
 .container-category{
   justify-content: center;
@@ -253,17 +256,26 @@ button {
 }
 
 .container-category label{
-  color: #222;
+  
   padding: 6px 20px;
   margin: 5px;
   font-size: 15px;
-  background: #e2e2e2;
   border-radius: 10px;
   cursor: pointer;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  -webkit-transition: all 500000000ms ease-in-out;
+  transition: all 150ms ease-in-out;
 }
 
 .container-category label:hover{
-  opacity: 0.9;
+
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  background: rgb(27, 81, 112);
+ 
+  
 }
 
 /* Nav  */ 

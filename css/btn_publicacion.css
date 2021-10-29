@@ -1,5 +1,7 @@
 .input-btn{
     justify-items: center;
+    
+    
 }
 
 .buttons{
@@ -32,4 +34,8 @@
     /*Outline, quita el borde negro del boton, luego de darle click*/
     outline: none;
     border-radius: 5px;
+}
+
+.btnEditar{
+    background: blue;
 }
