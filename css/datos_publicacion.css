@@ -1,9 +1,6 @@
 .datos-post
 {
-    justify-items: center;
     display: flex;
-    justify-content: center;
-    padding: 0px 40px;
-    margin-top: 40px 40px;
-    
+	flex-direction: column;
+	justify-content: space-between;
 }

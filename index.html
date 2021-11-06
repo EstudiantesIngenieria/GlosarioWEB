@@ -36,7 +36,7 @@
             <li><a id="btnMisPost">Mis Posts</a></li>
             <li><a id="btnModalPost">Realiza un Post</a></li>
             <li><a href="index.html#footer">Contactenos</a></li>
-            <li><a href="index.html#footer">Revista Digital</a></li>
+            <li><a target="_blank" href="https://www.canva.com/design/DAEtZ1NL49Y/cuEEqZAWZI8S9PuWeqkz5w/edit">Revista Digital</a></li>
         </ul>
         <!-- buscador para cada post -->
         <div class="form-group">
@@ -45,12 +45,18 @@
                 id="inputValid">
             <input type="image" src="./icons/search-solid.svg" alt="Buscador" id="logobuscar">
         </div>
+        
+         <span class="btn_menu">
+            <i class="fa fa -bars"></i>
+         </span>
     </nav>
+    
     <hr>
     <hr>
     <hr>
     <hr>
     <hr>
+
     <header class="headerppal">
         <figure class="header-logotipo">
             <img src="https://i.ibb.co/nCtbLkv/logo.jpg" alt="Blog Logotipo">
@@ -81,7 +87,7 @@
     <section>
         <h3 class="indice">Índice</h3>
         <div class="container-category">
-            
+
             <label for="A">A</label>
             <label for="B">B</label>
             <label for="C">C</label>
@@ -148,31 +154,33 @@
                         <label for="emailContacto">E-mail</label>
                     </div>
 
-                    
-                     <div class="tipos-comentarios"> 
-                    
+
+                    <div class="tipos-comentarios">
+
                         <div>
-                        <input type="radio" id="comentarioTipo"  name="Comentarios" value="comentarios" >
-                        <label for="comentarioTipo">Comentarios</label>
-                    
-                        <input type="radio" id="reclamoTipo"  name="reclamos" value="Reclamos" >
-                        <label for="reclamoTipo">Reclamos</label>
-                       
-                        <input type="radio" id="mejoraTipo"  name="Mejora" value="mejora" >
-                        <label for="mejoraTipo">Mejora</label>
-                       
-                        <input type="radio" id="otroTipo" name="Otro" value="otro" >
-                        <label for="otroTipo">Otro</label>
+                            <input type="radio" id="comentarioTipo" name="Comentarios" value="comentarios">
+                            <label for="comentarioTipo">Comentarios</label>
+
+                            <input type="radio" id="reclamoTipo" name="reclamos" value="Reclamos">
+                            <label for="reclamoTipo">Reclamos</label>
+
+                            <input type="radio" id="mejoraTipo" name="Mejora" value="mejora">
+                            <label for="mejoraTipo">Mejora</label>
+
+                            <input type="radio" id="otroTipo" name="Otro" value="otro">
+                            <label for="otroTipo">Otro</label>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="form-col2">
                     <label for="comentariosContacto">Comentarios:</label>
-                    <texhttps://prod.liveshare.vsengsaas.visualstudio.com/join?9A42090F92E86382C79FB56F85CE9A4A41C6tarea id="comentariosContacto" placeholder="Escribe tu comentario" cols="30" rows="6"
-                        required></textarea>
+                    <texhttps:
+                        //prod.liveshare.vsengsaas.visualstudio.com/join?9A42090F92E86382C79FB56F85CE9A4A41C6tarea
+                        id="comentariosContacto" placeholder="Escribe tu comentario" cols="30" rows="6" required>
+                        </textarea>
                         <input type="submit" class="waves-effect waves-light btn btnPpal" value="Enviar" />
-                    <!-- <input type="submit" class="waves-effect waves-light btn btnPpal" value="Enviar" /> -->
+                        <!-- <input type="submit" class="waves-effect waves-light btn btnPpal" value="Enviar" /> -->
                 </div>
             </div>
         </div>
@@ -191,8 +199,8 @@
                         <span>Colabora Ahora</span>
                     </div>
                     <div class="col s12 m6 registro-formulario">
-                        <div class="input-field">
-                            <input id="emailSesion" type="email" required />
+                        <div class="input-field">                            
+                            <input id="emailSesion" type="email" required/>
                             <label for="emailSesion">E-mail:</label>
                         </div>
                         <div class="input-field">
@@ -200,21 +208,20 @@
                             <label for="passwordSesion">Password:</label>
                         </div>
                         <div class="div-btnInicioSesion">
-                            <a id="btnInicioEmail" class="btn waves-effect waves-light">Iniciar Sesión<i
-                                    class="material-icons right">send</i></a>
-                        </div>
+                            <a id="btnInicioEmail" class="btn waves-effect waves-light">Iniciar Sesión<i class="material-icons right">send</i></a>
+                        </div>     
                         <div class="lbl-ingresar-redes">
                             <span>INGRESA CON:</span>
                         </div>
-                        <div class="registro-iconos-redes">
+                        <div class="registro-iconos-redes">                                          
                             <a id="authFB" class="logo-facebook" href="#"></a>
                             <a id="authGoogle" class="logo-google" href="#"></a>
                             <a id="authTwitter" class="logo-twitter" href="#"></a>
-                        </div>
+                            <a id="authGitHub" class="logo-github" href="#"></a>
+                        </div> 
                     </div>
                     <div class="col s12 m12 div-btnRegistrarse">
-                        <a id="btnRegistrarse" class="btn waves-effect waves-light">Crear una cuenta<i
-                                class="material-icons left">account_box</i></a>
+                        <a id="btnRegistrarse" class="btn waves-effect waves-light">Crear una cuenta<i class="material-icons left">account_box</i></a>                        
                     </div>
                 </div>
             </div>
@@ -311,42 +318,45 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- nuevo MODAL POST2 -->
-        <div class="editarpop" id="popup-2">
-            <div class="overlay2"></div>
-            <div class="content2">
-                <div class="close-btn2">×</div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 m6 registro-bienvenida">
-                            <h4>Edita tu publicacion</h4>
-                            <div class="registro-bienvenida-texto">
-                                Puedes editar de nuevo, si has cometido algun error.
+            <!-- nuevo MODAL POST2 -->
+    <div class="editarpop" id="popup-2">
+                <div class="overlay2"></div>
+                <div class="content2">
+                    <div class="close-btn2">×</div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 m6 registro-bienvenida">
+                                <h4>Edita tu publicacion</h4>
+                                <div class="registro-bienvenida-texto">
+                                    Puedes editar de nuevo, si has cometido algun error.
+                                </div>
+                                <span>Corrigelo ahora.</span>
                             </div>
-                            <span>Corrigelo ahora.</span>
-                        </div>
-                        <div class="col s12 m6 registro-formulario">
-                            <div class="input-field">
-                                <input id="tituloEditPost" type="text" maxlength="30" data-length="30" required />
-                                <label for="tituloNewPost">Titulo:</label>
-                            </div>
-                            <div class="input-field">
-                                <textarea id="descripcionEditPost" type="text" maxlength="600" data-length="600"
-                                    class="materialize-textarea" required></textarea>
-                                <label for="descripcionPost">Descripción:</label>
-                            </div>
-                            <div class="div-btnInicioSesion">
-                                <a id="btnRegistroEditPost" class="btn waves-effect waves-light">Aceptar<i
-                                        class="material-icons left">create</i></a>
+                            <div class="col s12 m6 registro-formulario">
+                                <div class="input-field">
+                                    <input id="tituloEditPost" type="text" maxlength="30" data-length="30" required />
+                                    <label for="tituloNewPost">Titulo:</label>
+                                </div>
+                                <div class="input-field">
+                                    <textarea id="descripcionEditPost" type="text" maxlength="600" data-length="600"
+                                        class="materialize-textarea" required></textarea>
+                                    <label for="descripcionPost">Descripción:</label>
+                                </div>
+                                <div class="div-btnInicioSesion">
+                                    <a id="btnRegistroEditPost" class="btn waves-effect waves-light">Aceptar<i
+                                            class="material-icons left">create</i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <section id="allPosts">
+    </div>   
+                
+     <section id="allPosts">
 
-            </section>
+     </section>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -360,7 +370,7 @@
 
 <!-- <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-firestore.js"></script> -->
 
-
+<script type="text/javascript" src="JS/general.js"></script>
 <!--build:js js/main.min.js -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js'></script>
 <script src="./script.js"></script>
@@ -372,6 +382,8 @@
 <script type="module" src="./JS/firebase/credentials.js"></script>
 <script type="module" src="./JS/firebase/authentication.js"></script>
 <script type="module" src="./JS/publicaciones/publicacion.js"></script>
+
+
 
 
 <!-- spinner -->

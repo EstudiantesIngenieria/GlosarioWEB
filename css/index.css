@@ -346,11 +346,14 @@ body {
   background: #126798;
   color: #fff;
   font-size: 17px;
-  padding-bottom: 0.5em;
+  height: 125px;
   padding-top: 1em;
   padding-left: 0.5em;
-  text-align: left;
+
   width: 100%;
+  display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .modal-registro {
   width: 80% !important;
@@ -431,6 +434,17 @@ body {
   font-size: 40px;
   font-family: "Flaticon";
 }
+
+.registro-formulario .registro-iconos-redes .logo-github {
+  margin-left: 1em;
+}
+.registro-formulario .registro-iconos-redes .logo-github:before {
+  color: #7acc2d;
+  content: "\f100";
+  font-size: 40px;
+  font-family: "Flaticon";
+}
+
 .div-btnRegistrarse {
   text-align: center;
   margin-top: 2em;

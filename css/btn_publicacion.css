@@ -1,41 +1,37 @@
 .input-btn{
-    justify-items: center;
-    
-    
+  position: relativate;
+  display: inline-block;
+  border: 2px solid var(--white);
+  padding: 20px 80px;
+  color: var(--black);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--white);
+  transition: color 0.5s, background 0.5s;
+  margin-left: 30px;
+  margin-bottom: 15px;
+  font-size: 1em;
+  min-width: 140px;
+  text-align: center;
 }
 
 .buttons{
     display: flex;
     justify-content: center;
-    padding: 10px 40px;
-    margin-top: 40px 40px;
-    border: none;
-    font-size: 14px;
-    background: #46A2FD;
-    font-weight: 600;
-    cursor: pointer;
-    color: white;
-    /*Outline, quita el borde negro del boton, luego de darle click*/
-    outline: none;
-    border-radius: 5px;
-
+    font-size: 50px;
+    
+    
 }
 
 .btn-sec{
     display: flex;
-    justify-content: left;
-    margin: auto;
-    border: none;
-    font-size: 14px;
-    background: #f5f7f8;
-    font-weight: 600;
-    cursor: pointer;
+    
+    margin: 20px;
+   border-radius: 5px;
+    font-size: 16px;
+   
     color: black;
+    
     /*Outline, quita el borde negro del boton, luego de darle click*/
-    outline: none;
-    border-radius: 5px;
-}
-
-.btnEditar{
-    background: blue;
 }
