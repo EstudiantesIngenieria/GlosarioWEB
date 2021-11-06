@@ -186,6 +186,8 @@ body {
 .menu ul li a:hover {
   font-size: 17px;
 }
+
+/* ========= Inicial foter  ============*/
 .footer {
   height: 100%;
   background: #126798;
@@ -248,30 +250,9 @@ body {
   text-align: center;
   margin: 10px;
 }
-.footer .contenedor-footer .redesSociales .logos-redes {
-  text-align: center;
-}
-.footer .contenedor-footer .redesSociales .logos-redes a {
-  text-decoration: none;
-}
-.footer .contenedor-footer .redesSociales .logos-redes .logo-facebook:before {
-  color: #7acc2d;
-  content: "\f101";
-  font-size: 30px;
-  font-family: "Flaticon";
-}
-.footer .contenedor-footer .redesSociales .logos-redes .logo-twitter:before {
-  color: #7acc2d;
-  content: "\f102";
-  font-size: 30px;
-  font-family: "Flaticon";
-}
-.footer .contenedor-footer .redesSociales .logos-redes .logo-github:before {
-  color: #7acc2d;
-  content: "\f100";
-  font-size: 30px;
-  font-family: "Flaticon";
-}
+
+/* ========= Final foter  ============*/
+
 .posts {
   
   width: auto;
@@ -288,22 +269,8 @@ body {
   margin-right: 1.5em;
   width: 100%;
 }
-.posts .post .post-calificacion .post-estrellita-vacia {
-  text-decoration: none;
-}
-.posts .post .post-calificacion .post-estrellita-vacia:before {
-  color: #7acc2d;
-  content: "\e9d7";
-  font-family: "icono_estrellita_vacia";
-}
-.posts .post .post-calificacion .post-estrellita-llena {
-  text-decoration: none;
-}
-.posts .post .post-calificacion .post-estrellita-llena:before {
-  color: #7acc2d;
-  content: "\e9d9";
-  font-family: "icono_estrellita_llena";
-}
+
+
 .posts .post .post-titulo {
   text-align: center;
   background: #eee;
@@ -314,10 +281,6 @@ body {
 }
 .posts .post .post-titulo h5 {
   font-weight: bold;
-}
-.posts .post .post-video {
-  text-align: center;
-  padding: 0 0.5em;
 }
 
 
@@ -330,18 +293,7 @@ body {
   text-align: justify;
   color: #000;
 }
-.posts .post .post-videolink {
-  text-align: center;
-  background: #126798;
-  color: #fff;
-  font-family: 'Allerta', sans-serif;
-  padding: 0.5em;
-  font-size: 17px;
-}
-.posts .post .post-videolink a {
-  color: #fff;
-  text-decoration: underline;
-}
+
 .posts .post .post-footer {
   background: #126798;
   color: #fff;

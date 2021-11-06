@@ -1,13 +1,10 @@
-. txt_area_post{
-  
-    readonly:"readonly";
-    overflow:scroll;
-    resize: none;
+.txt_area_post {
+  readonly: "readonly";
+  overflow: scroll;
+  resize: none;
 }
 
-textarea{
-    resize: none;
-    height: 190px;
+textarea {
+  resize: none;
+  height: 190px;
 }
-
-     
