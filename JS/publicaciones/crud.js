@@ -3,11 +3,14 @@ import {
     collection,
     addDoc,
     getDoc,
+    getDocs,
     deleteDoc, 
     updateDoc, 
     doc, 
     arrayUnion,
-    auth
+    auth,
+    query, 
+    where
 } from "../firebase/credentials.js";
 
 import {
@@ -87,6 +90,26 @@ async function getWord(id){
     return docSnap.data();
 };
 
+async function getWord2(word){
+    var flag = false;
+    // const palabras = collection(db, "palabras");
+    // const q = query(palabras, where("titulo", "==", word));
+    // const querySnapshot = await getDocs(q);
+    // querySnapshot.forEach((doc) => {
+    //     console.log(doc.id, " => ", doc.data());
+    //     flag = true;
+    // });
+    const querySnapshot = await getDocs(collection(db, "palabras"));
+    querySnapshot.forEach((doc) => {
+        const wordId = doc.data().titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        if (wordId == word.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")){
+            console.log(wordId);
+            flag = true;
+        }
+      });
+    return flag;
+};
+
 export {
-    insertWord, deleteWord, editWord, getWord
+    insertWord, deleteWord, editWord, getWord, getWord2
 }

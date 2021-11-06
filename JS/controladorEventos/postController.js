@@ -7,7 +7,7 @@ import {
   verificaSesion,
 } from "../firebase/authentication.js";
 import { crearPost, showPosts} from "../publicaciones/publicacion.js";
-import { insertWord, deleteWord, editWord, getWord } from "../publicaciones/crud.js"
+import { insertWord, deleteWord, editWord, getWord, getWord2 } from "../publicaciones/crud.js"
 import { uploadImg } from "../cloudStorage/uploadCloud.js"
 import { obtener_palabras } from "../search/buscador.js";
 
@@ -56,26 +56,20 @@ $('.close-btn2').click(function (e) {
 // });
 
 //Submit new post when btnRegistroPost is clicked
-$('#btnRegistroPost').click(function (e) { 
+$('#btnRegistroPost').click(async function (e) { 
   e.preventDefault();
-  //get the file that's gonna be uploaded
-  //const inpFile = document.getElementById("btnUploadFile");
- // const file = inpFile.files[0];
   //get the value from the title input
   const postTitle = document.getElementById("tituloNewPost").value;
-  //get the value from the description input
-  const postDesc = document.getElementById("descripcionNewPost").value;
-  //get the value from the video link input
- // const postVidLink = document.getElementById("linkVideoNewPost").value;
-  //check if user selected a file
-  insertWord(postTitle, postDesc);
-  //if (typeof file !== "undefined") {
-    //call the uploadImg function and insertWord function
-   // insertWord(postTitle, postDesc);
-  //} else {
-    //only call the insertWord function
- //   insertWord(postTitle, postDesc);
- // }
+  // //get the value from the description input
+  // const postDesc = document.getElementById("descripcionNewPost").value;
+  // //check if user selected a file
+  let validation = await getWord2(postTitle);
+  if (!validation){
+    // insertWord(postTitle, postDesc);
+    alert('Aún no registrado');
+  } else {
+    alert('¡Esta palabra ya existe!');
+  }
 });
 
 $('#btnRegistroEditPost').click(function (e) { 
@@ -105,10 +99,6 @@ $(document).on('click', '.btn-pop', async function(e) {
   const postDesc = document.getElementById("descripcionEditPost").value = promise.descripcion;
   idEdit = this.id;
 });
-
-
-
-
 
 $("#btnMisPost").click(function (e) { 
   e.preventDefault();
