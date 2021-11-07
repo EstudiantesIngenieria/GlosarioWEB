@@ -90,7 +90,7 @@ $(document).on('click', '.delete-btn-post', function(e) {
   deleteWord(this.id);
 });
 
-$(document).on('click', '.edit-btn-post', async function(e) {
+$(document).on('click', '.btn-sec', async function(e) {
   $('#popup-2').toggleClass('active');
   console.log("Editar");
   // document.getElementById("popup-2").classList.toggle("active");
@@ -107,7 +107,7 @@ $("#btnMisPost").click(function (e) {
 
 $("#btnInicioSesion").click(function (e) {
   //login
-  // accesoCorreo("pepito32@gmail.com", "12345678");
+  accesoCorreo("pepito3@gmail.com", "12345678");
   // registroCorreo(
   //   "pepito3@gmail.com",
   //   "12345678",
@@ -115,5 +115,5 @@ $("#btnInicioSesion").click(function (e) {
   //   "Tavo",
   //   "https://images.unsplash.com/photo-1633121919063-471d6534a2e1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1974&q=80"
   //  );
-  accesoGmail();
+  // accesoGmail();
 });

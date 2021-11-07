@@ -1,5 +1,5 @@
 import { db, collection, getDocs } from "../firebase/credentials.js";
-
+import { historys, renderHistorys } from "../historial/useHistory.js";
 const formulario = document.querySelector("#inputValid");
 const resultado = document.querySelector(".posts");
 
@@ -38,7 +38,7 @@ async function obtener_palabras() {
     );
     $(".posts").append(html);
   })
-  indice = arrayTest
+  indice = [...arrayTest]
   arrayTest = [];
 }
 obtener_palabras();
@@ -263,6 +263,23 @@ $("#btnTodoPost").click(function (e) {
   $(".post").remove();
   obtener_palabras();
 });
+
+
+//? Funcion hostory
+$('#btnHistory').click(function (e) { 
+  e.preventDefault();
+  let arr = historys(indice);
+  renderHistorys(arr);
+  console.log(arr)
+});
+
+
+
+
+
+
+
+
 
 function obtenerPostTemplate(
   id,
