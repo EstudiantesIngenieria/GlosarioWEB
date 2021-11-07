@@ -38,8 +38,8 @@ $("#btnModalPost").click(function (e) {
 //close popup button
 $('.close-btn').click(function (e) { 
   $('#popup-1').toggleClass('active');
+  obtener_palabras();
 });
-
 
 $('.close-btn2').click(function (e) { 
   $('#popup-2').toggleClass('active');
@@ -61,11 +61,11 @@ $('#btnRegistroPost').click(async function (e) {
   //get the value from the title input
   const postTitle = document.getElementById("tituloNewPost").value;
   // //get the value from the description input
-  // const postDesc = document.getElementById("descripcionNewPost").value;
+  const postDesc = document.getElementById("descripcionNewPost").value;
   // //check if user selected a file
   let validation = await getWord2(postTitle);
   if (!validation){
-    // insertWord(postTitle, postDesc);
+    insertWord(postTitle, postDesc);
     alert('Aún no registrado');
   } else {
     alert('¡Esta palabra ya existe!');
@@ -90,7 +90,7 @@ $(document).on('click', '.delete-btn-post', function(e) {
   deleteWord(this.id);
 });
 
-$(document).on('click', '.btn-pop', async function(e) {
+$(document).on('click', '.edit-btn-post', async function(e) {
   $('#popup-2').toggleClass('active');
   console.log("Editar");
   // document.getElementById("popup-2").classList.toggle("active");

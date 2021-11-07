@@ -36,6 +36,7 @@ async function crearPost(uid, titulo, descripcion, imagenLink, videoLink) {
 }
 
 async function showPosts() {
+  $(".delete-btn-post").hide();
   let finalHTMLPosts
   const querySnapshot = await getDocs(collection(db, "palabras"));
   querySnapshot.forEach((doc) => {
