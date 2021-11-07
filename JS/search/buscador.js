@@ -260,6 +260,8 @@ $("#inputValid").keyup(function (e) {
 });
 
 $("#btnTodoPost").click(function (e) {
+  $('.indice').show();
+  $('.container-category').show();
   $(".post").remove();
   obtener_palabras();
 });

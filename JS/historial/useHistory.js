@@ -1,6 +1,5 @@
 //fuction 
 function historys(arr) {
-    console.log(arr);
     let arr2 = [];
     arr.forEach((obj) => {
         if (typeof obj.editores !== 'undefined') {
@@ -17,6 +16,8 @@ function historys(arr) {
 function renderHistorys(
     arr,
 ) {
+    $('.indice').hide();
+    $('.container-category').hide();
     $('.post').remove();
     arr.forEach((obj) => {
         let arr2 = obj.editores;
