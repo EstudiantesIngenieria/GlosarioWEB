@@ -145,7 +145,7 @@ body {
 
 
 .menu {
-  display: flex;
+  display: flexbox;
 
   z-index: 999;
   position: fixed;
@@ -153,7 +153,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-
+ 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -167,86 +167,24 @@ body {
 }
 
 .menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  /*se le agrega esto para que el ul se aculte cuando la pagina esta comprimida*/
-  transform: translateX(-200%)
-  
-  
-}
-/*esto activa */
-ul.active{
-  /*esto muestra la lista que esta en el nav con las opciones*/
-  transform: translateX(0);
+  margin: 0px;
 }
 .menu ul li {
   display: block;
   line-height: 40px;
-  transition: 0.6s
+  transition: 0.6s;
 }
 .menu ul li:hover {
   background: #126798;
 }
 .menu ul li a {
-  background: #126798;
-  color:#fff;
+  color: #fff;
   text-decoration: none;
   padding: 0 1em;
   transition: 0.6s;
-  
 }
 .menu ul li a:hover {
   font-size: 17px;
-}
-.boton {
-  justify-content:right;
-  background: none;
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
-}
-.boton .linea {
-  height: 2px;
-  width: 20px;
-  background: #000;
-  margin: 4px 0;
-
-}
-.form-group{
-  display: none;
-}
-/*esto pasa cuando la web llega a un tamaño en especifico*/
-@media (min-width: 1090px){
-  /*Esto pasa cuando se regresa a un tamaño normal*/
-  .boton {
-    /*aculta el boton cuando regresa a su tamaño nomal*/
-      display: none;
-  }
-  .menu ul{ 
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: row; 
-    transform: translateX(0)
-  
-  }
-  .menu ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0 1em;
-    transition: 0.6s;
-    background: none;
-  }
-  .form-group{
-    height: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  }
-  
 }
 
 /* ========= Inicial foter  ============*/
@@ -255,62 +193,24 @@ ul.active{
   background: #126798;
   margin: 0px;
 }
-.footer .contenedor-footer {
+.contenedor-footer {
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-around;
+  justify-content: center;
+  flex-wrap: wrap;
+ /* flex-direction: column-reverse;*/
+ /* justify-content: space-around;*/
 }
-.footer .contenedor-footer .formulario-contactenos {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
+.autores{
+  margin-top: 2rem;
+  text-align: justify;
 }
-.footer .contenedor-footer .formulario-contactenos .form-col1,
-.footer .contenedor-footer .formulario-contactenos .form-col2 {
-  margin-right: 30px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
+.footer-ul{
+  list-style-type: circle;
 }
-.footer .contenedor-footer .formulario-contactenos .form-col1 input,
-.footer .contenedor-footer .formulario-contactenos .form-col2 input {
-  margin-bottom: 10px;
-}
-.footer .contenedor-footer .formulario-contactenos .form-col1 label {
-  color: #fff;
-}
-.footer .contenedor-footer .formulario-contactenos .form-col1 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.footer .contenedor-footer .formulario-contactenos .form-col1 .tipos-comentarios {
-  display: flex;
-  flex-direction: column;
-}
-.footer .contenedor-footer .formulario-contactenos .form-col1 .tipos-comentarios label {
-  font-size: 13px;
-}
-.footer .contenedor-footer .formulario-contactenos .form-col2 {
-  align-items: flex-start;
-}
-.footer .contenedor-footer .formulario-contactenos .form-col2 label {
-  color: #fff;
-  margin-bottom: 1em;
-}
-.footer .contenedor-footer .formulario-contactenos .form-col2 textarea {
-  margin-bottom: 10px;
-  height: 110px;
-}
-.footer .contenedor-footer .redesSociales .realizadopor {
-  padding-top: 30px;
-}
-.footer .contenedor-footer .redesSociales .realizadoclase {
-  padding-bottom: 30px;
-}
-.footer .contenedor-footer .redesSociales p {
-  color: #fff;
+.footer-li{
+  float: left;
   text-align: center;
-  margin: 10px;
+  padding: 1rem;
 }
 
 /* ========= Final foter  ============*/
