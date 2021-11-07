@@ -21,13 +21,13 @@ import { obtener_palabras } from "../search/buscador.js";
 
 
 //function for add new doc in Firestore
-async function insertWord(title, desc, imgLink, vidLink, file){
-    let imgURL = imgLink;
+async function insertWord(title, desc){
+   // let imgURL = imgLink;
     //If there's a file to upload calls the function from uploadCloud.js
-    if (imgLink!= null){
-        let promise = await uploadImg(imgLink, file);
-        imgURL = await getImgDownloadURL(imgLink);
-    }
+//    if (imgLink!= null){
+//        let promise = await uploadImg(imgLink, file);
+//        imgURL = await getImgDownloadURL(imgLink);
+//    }
     //check if there is an user signed in
     let signedIn = auth.currentUser;
     //if auth.currentUser is not null, then use addDoc with parameters

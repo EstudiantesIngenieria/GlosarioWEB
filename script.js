@@ -36,7 +36,6 @@ window.onscroll = function(){
 
 }
 
-
 // ------------- FIN BTN IR HACIA ARRIVA -----------
 
 

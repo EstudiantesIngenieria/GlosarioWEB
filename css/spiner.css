@@ -83,7 +83,7 @@
 }
  
 .popup  .content {
-  position:absolute;
+  position:fixed;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%) scale(0);
@@ -136,7 +136,7 @@
 }
  
 .editarpop  .content2 {
-  position:absolute;
+  position: fixed;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%) scale(0);
@@ -235,9 +235,16 @@ button {
 
 
 /*  Css indice */
-h2{
+.indice{
+  font-family: 'Montserrat', sans-serif;
+  color: #126798;
+  text-align: center;
   justify-content: center;
+  border: 2px black dotted;
+  border-radius: 5px;
+  padding: 10px;
 }
+
 
 .container-category{
   justify-content: center;
@@ -249,22 +256,31 @@ h2{
 }
 
 .container-category label{
-  color: #222;
+  
   padding: 6px 20px;
   margin: 5px;
   font-size: 15px;
-  background: #e2e2e2;
   border-radius: 10px;
   cursor: pointer;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  -webkit-transition: all 500000000ms ease-in-out;
+  transition: all 150ms ease-in-out;
 }
 
 .container-category label:hover{
-  opacity: 0.9;
+
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  background: rgb(27, 81, 112);
+ 
+  
 }
 
 /* Nav  */ 
 nav.sticky{
   background: #3a6cf4;
-  padding: 10px 100px;
+  padding: 10px 50px;
   box-shadow: 0 8px 10px rgba(0,0,0,0.5);
 }

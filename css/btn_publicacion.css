@@ -1,36 +1,17 @@
-.input-btn{
-    justify-items: center;
+.buttons {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
 }
 
-.edit-btn-post{
+.btn-sec {
+  display: flex;
 
-    padding: 10px 40px;
-    margin-top: 40px 40px;
-    border: none;
-    font-size: 14px;
-    background: #46A2FD;
-    font-weight: 600;
-    cursor: pointer;
-    color: white;
-    /*Outline, quita el borde negro del boton, luego de darle click*/
-    outline: none;
-    border-radius: 5px;
+  margin: 20px;
+  border-radius: 5px;
+  font-size: 16px;
 
-}
+  color: black;
 
-.delete-btn-post{
-
-    padding: 10px 40px;
-    margin-top: 40px;
-    border: none;
-    font-size: 14px;
-    background: #46A2FD;
-    font-weight: 600;
-    cursor: pointer;
-    color: white;
-    /*Outline, quita el borde negro del boton, luego de darle click*/
-    outline: none;
-    border-radius: 5px;
-
-
+  /*Outline, quita el borde negro del boton, luego de darle click*/
 }
