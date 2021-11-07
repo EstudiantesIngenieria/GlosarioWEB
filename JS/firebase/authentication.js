@@ -97,14 +97,18 @@ function accesoGmail() {
     });
 }
 
-function verificaSesion() {
+function verificaSesion(isEdit) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const img = document.getElementById("avatar");
       img.src = user.photoURL;
       $('#btnInicioSesion').hide();
       $('#btnCerrarSesion').show();
-
+      if (isEdit) {
+        var userA = Object.assign({}, user);
+        console.log(userA);
+        return userA;
+      }
     } else {
       console.log('si entro2')
       $('#btnCerrarSesion').hide();
