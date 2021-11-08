@@ -121,7 +121,7 @@ $("#btnInicioEmail").click(function (e) {
 
 $("#btnInicioSesion").click(function (e) {
   //login
-  accesoCorreo("fernando@gmail.com", "12345678");
+  //accesoCorreo("fernando@gmail.com", "12345678");
   // registroCorreo(
   //   "pepito3@gmail.com",
   //   "12345678",
