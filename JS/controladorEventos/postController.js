@@ -5,6 +5,7 @@ import {
   accesoGmail,
   singouts,
   verificaSesion,
+  verificationLogin,
 } from "../firebase/authentication.js";
 import { crearPost, showPosts} from "../publicaciones/publicacion.js";
 import { insertWord, deleteWord, editWord, getWord, getWord2 } from "../publicaciones/crud.js"
@@ -104,6 +105,19 @@ $("#btnMisPost").click(function (e) {
   e.preventDefault();
   // crearPost('1', 'Acta de constitución', 'Documento en el que se encuentra de forma resumida los datos y componentes clave de la fase de iniciación del proyecto como lo pueden ser el Alcance, Objetivos o Stakeholders.', null, null)
 });
+
+$("#btnInicioEmail").click(function (e) {
+  let email = document.getElementById("emailSesion").value
+  let pass = document.getElementById("passwordSesion").value
+  if (verificationLogin(pass, email) == true) {
+    console.log("Cumple con la verifiacion de datos");
+  }else if(verificationLogin(pass, email) == 'pass'){
+    console.log("Contraseña no pasa");
+  }else if(verificationLogin(pass, email) == 'email'){
+    console.log("Email no pasa");
+  }
+});
+
 
 $("#btnInicioSesion").click(function (e) {
   //login

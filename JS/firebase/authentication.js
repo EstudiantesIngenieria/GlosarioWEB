@@ -129,5 +129,25 @@ function singouts() {
     });
 }
 
+/*
+La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+Puede tener otros símbolos.
 
-export { registroCorreo, accesoCorreo, accesoGmail, singouts, verificaSesion };
+
+Cualquier dirección de correo elecrónico que contenga caracteres Unicode
+*/
+
+function verificationLogin(cadena, cadenaEmail) {
+  let regExEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i
+  let regexPass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
+
+  if (!regexPass.test(cadena)) {
+    return 'pass'
+  }else if(!regExEmail.test(cadenaEmail)){
+    return 'email'
+  }else{
+    return true
+  }
+}
+
+export { registroCorreo, accesoCorreo, accesoGmail, singouts, verificaSesion, verificationLogin };
