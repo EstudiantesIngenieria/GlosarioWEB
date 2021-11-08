@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/btnIrArriba.css">
     <link rel="stylesheet" href="css/estilo_areatxt.css">
     <link rel="stylesheet" href="css/btn_publicacion.css">
+    <script defer src="JS/boton_resposive_header.js"></script>
     <!--endbuild-->
     <link rel="manifest" href="manifest.json">
 </head>
@@ -46,8 +47,13 @@
                 id="inputValid">
             <input type="image" src="./icons/search-solid.svg" alt="Buscador" id="logobuscar">
         </div>
+        <button class = "boton" >
+            <div class="linea"></div>
+            <div class="linea"></div>
+            <div class="linea"></div>
+        </button>
     </nav>
-    
+
     <hr>
     <hr>
     <hr>
@@ -126,12 +132,25 @@
 
     <footer class="footer" id="footer">
         <div class="contenedor-footer">
-            <div class="redesSociales">
-                <!-- Esto es el footer -->
-                <p class="realizadopor"><strong>Programadores desarrollando</strong></p>
-                <p class="realizadoclase"><strong>Ingeniería</strong></p>
-                </div>
-            </div>
+            <p class="autores">Autores</p>
+            <ul class="footer-ul">
+                <li class="footer-li">KELVIN CANO</li>
+                <li class="footer-li">PEDRO COTOC</li>
+                <li class="footer-li">PABLO GARZONA</li>
+                <li class="footer-li">CRISTOPHER GUERRA</li>
+                <li class="footer-li">JOSÉ JUÁREZ</li>
+                <li class="footer-li">ERICK LIMA</li>
+                <li class="footer-li">JONATHAN MARTINEZ</li>
+                <li class="footer-li">FREDY MATEO</li>
+                <li class="footer-li">JOSUE MENDEZ</li>
+                <li class="footer-li">ANDREA MORALES</li>
+                <li class="footer-li">ELMER PÚ</li>
+                <li class="footer-li">DOUGLAS QUEMÉ</li>
+                <li class="footer-li">LUIS RODRÍGUEZ</li>
+                <li class="footer-li">ZOILA SANCHEZ</li>
+                <li class="footer-li">GEOVANNY TECÚM</li>
+                <li class="footer-li">JOSÉ TISTOJ</li>
+            </ul>
         </div>
     </footer>
 
@@ -148,8 +167,8 @@
                         <span>Colabora Ahora</span>
                     </div>
                     <div class="col s12 m6 registro-formulario">
-                        <div class="input-field">                            
-                            <input id="emailSesion" type="email" required/>
+                        <div class="input-field">
+                            <input id="emailSesion" type="email" required />
                             <label for="emailSesion">E-mail:</label>
                         </div>
                         <div class="input-field">
@@ -157,17 +176,19 @@
                             <label for="passwordSesion">Password:</label>
                         </div>
                         <div class="div-btnInicioSesion">
-                            <a id="btnInicioEmail" class="btn waves-effect waves-light">Iniciar Sesión<i class="material-icons right">send</i></a>
-                        </div>     
+                            <a id="btnInicioEmail" class="btn waves-effect waves-light">Iniciar Sesión<i
+                                    class="material-icons right">send</i></a>
+                        </div>
                         <div class="lbl-ingresar-redes">
                             <span>INGRESA CON:</span>
                         </div>
-                        <div class="registro-iconos-redes">                                          
+                        <div class="registro-iconos-redes">
                             <a id="authGoogle" class="logo-google" href="#"></a>
-                        </div> 
+                        </div>
                     </div>
                     <div class="col s12 m12 div-btnRegistrarse">
-                        <a id="btnRegistrarse" class="btn waves-effect waves-light">Crear una cuenta<i class="material-icons left">account_box</i></a>                        
+                        <a id="btnRegistrarse" class="btn waves-effect waves-light">Crear una cuenta<i
+                                class="material-icons left">account_box</i></a>
                     </div>
                 </div>
             </div>
@@ -206,7 +227,7 @@
                         </div>
                     </div>
                     <div class="col s12 m12 div-btnRegistrarse">
-                        <a id="btnIniciarSesion" class="btn waves-effect waves-light">Iniciar Sesión<i
+                        <a id="modalSesion" class="btn waves-effect waves-light">Iniciar Sesión<i
                                 class="material-icons right">send</i></a>
                     </div>
                 </div>
@@ -267,43 +288,43 @@
         </div>
     </div>
 
-            <!-- nuevo MODAL POST2 -->
+    <!-- nuevo MODAL POST2 -->
     <div class="editarpop" id="popup-2">
-                <div class="overlay2"></div>
-                <div class="content2">
-                    <div class="close-btn2">×</div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col s12 m6 registro-bienvenida">
-                                <h4>Edita tu publicacion</h4>
-                                <div class="registro-bienvenida-texto">
-                                    Puedes editar de nuevo, si has cometido algun error.
-                                </div>
-                                <span>Corrigelo ahora.</span>
-                            </div>
-                            <div class="col s12 m6 registro-formulario">
-                                <div class="input-field">
-                                    <input id="tituloEditPost" type="text" maxlength="30" data-length="30" required />
-                                    <label for="tituloNewPost">Titulo:</label>
-                                </div>
-                                <div class="input-field">
-                                    <textarea id="descripcionEditPost" type="text" maxlength="600" data-length="600"
-                                        class="materialize-textarea" required></textarea>
-                                    <label for="descripcionPost">Descripción:</label>
-                                </div>
-                                <div class="div-btnInicioSesion">
-                                    <a id="btnRegistroEditPost" class="btn waves-effect waves-light">Aceptar<i
-                                            class="material-icons left">create</i></a>
-                                </div>
-                            </div>
+        <div class="overlay2"></div>
+        <div class="content2">
+            <div class="close-btn2">×</div>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6 registro-bienvenida">
+                        <h4>Edita tu publicacion</h4>
+                        <div class="registro-bienvenida-texto">
+                            Puedes editar de nuevo, si has cometido algun error.
+                        </div>
+                        <span>Corrigelo ahora.</span>
+                    </div>
+                    <div class="col s12 m6 registro-formulario">
+                        <div class="input-field">
+                            <input id="tituloEditPost" type="text" maxlength="30" data-length="30" required />
+                            <label for="tituloNewPost">Titulo:</label>
+                        </div>
+                        <div class="input-field">
+                            <textarea id="descripcionEditPost" type="text" maxlength="600" data-length="600"
+                                class="materialize-textarea" required></textarea>
+                            <label for="descripcionPost">Descripción:</label>
+                        </div>
+                        <div class="div-btnInicioSesion">
+                            <a id="btnRegistroEditPost" class="btn waves-effect waves-light">Aceptar<i
+                                    class="material-icons left">create</i></a>
                         </div>
                     </div>
                 </div>
-    </div>   
-                
-     <section id="allPosts">
+            </div>
+        </div>
+    </div>
 
-     </section>
+    <section id="allPosts">
+
+    </section>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
