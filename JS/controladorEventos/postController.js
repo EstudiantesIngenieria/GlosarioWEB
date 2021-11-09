@@ -1,4 +1,4 @@
-import { doc, getApps } from "../firebase/credentials.js";
+import { doc, getApps, auth } from "../firebase/credentials.js";
 import {
   accesoCorreo,
   registroCorreo,
@@ -13,6 +13,7 @@ import { uploadImg } from "../cloudStorage/uploadCloud.js"
 import { mostrar, obtener_palabras} from "../search/buscador.js";
 
 var idEdit;
+var pastTitle;
 
 $(document).ready(function () {
   verificaSesion();
@@ -65,45 +66,86 @@ $('#btnRegistroPost').click(async function (e) {
   // //check if user selected a file
   let validation = await getWord2(postTitle);
   if (!validation) {
-    insertWord(postTitle, postDesc);
-    alert('Aún no registrado');
+    await insertWord(postTitle, postDesc);
+    $('.indice').show();
+    $('.container-category').show();
+    $(".post").remove();
+    obtener_palabras(true);
   } else {
     alert('¡Esta palabra ya existe!');
   }
 });
 
-$('#btnRegistroEditPost').click(function (e) {
+$('#btnRegistroEditPost').click(async function (e) {
   e.preventDefault();
   //get the value from the title input
   const postTitle = document.getElementById("tituloEditPost").value;
+  
   //get the value from the description input
   const postDesc = document.getElementById("descripcionEditPost").value;
   //get the value from the video link input
   // const postVidLink = document.getElementById("linkVideoEditPost").value;
-
   //Verificacion de campos
   if (postTitle.length < 1 || postDesc.length < 1) {
     alert("Los campos del titulo y la descripcion no pueden quedar vacios!");
   } else {
-    editWord(idEdit, postTitle, postDesc, null, null);
-    idEdit = "";
+    if (pastTitle.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == postTitle.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")){
+      await editWord(idEdit, postTitle, postDesc, null, null);
+      $('.indice').show();
+      $('.container-category').show();
+      $(".post").remove();
+      $('#popup-2').removeClass('active');
+      obtener_palabras(true);
+    } else {
+      let validation = await getWord2(postTitle);
+      if (!validation) {
+        await editWord(idEdit, postTitle, postDesc, null, null);
+        pastTitle = "";
+        idEdit = "";
+        $('.indice').show();
+        $('.container-category').show();
+        $(".post").remove();
+        $('#popup-2').removeClass('active');
+        obtener_palabras(true);
+      } else {
+        alert('¡Esta palabra ya existe!');
+      }
+    }
+    
   }
 
 });
 
 $(document).on('click', '.delete-btn-post', async function (e) {
-  if (window.confirm("¿Está seguro que desea eliminar este documento?")) {
-    await deleteWord(this.id);
+  if ( auth.currentUser != null ) {
+    let promise = await getWord(this.id);
+    if ( promise.autor == auth.currentUser.email ) {
+      if (window.confirm("¿Está seguro que desea eliminar este documento?")) {
+        await deleteWord(this.id);
+        $('.indice').show();
+        $('.container-category').show();
+        $(".post").remove();
+        obtener_palabras(true);
+      }
+    } else {
+      alert('Solo el autor puede eliminar la palabra');
+    }
+  } else {
+    alert('Debe iniciar sesión para verificar su identidad');
   }
 });
 
 $(document).on('click', '.btn-pop', async function (e) {
+  // if ( auth.currentUser != null ) {
   $('#popup-2').toggleClass('active');
   // document.getElementById("popup-2").classList.toggle("active");
   let promise = await getWord(this.id);
-  document.getElementById("tituloEditPost").value = promise.titulo;
+  pastTitle = document.getElementById("tituloEditPost").value = promise.titulo;
   const postDesc = document.getElementById("descripcionEditPost").value = promise.descripcion;
   idEdit = this.id;
+  // } else {
+  //   alert('Debe iniciar sesión para verificar su identidad');
+  // }
 });
 
 $("#btnMisPost").click(function (e) {

@@ -18,6 +18,10 @@ import {
     getImgDownloadURL
 } from "../cloudStorage/uploadCloud.js";
 
+import {
+    obtener_palabras
+} from "../search/buscador.js"
+
 
 //function for add new doc in Firestore
 async function insertWord(title, desc) {
@@ -48,7 +52,7 @@ async function insertWord(title, desc) {
             // videoLink: vidLink,
             fechacreacion: date
         });
-        alert("Document written with ID: " + docRef.id);
+        alert("Inserción de post de manera exitosa!");
     } else {
         alert('ERROR, Inicie sesión');
     }
@@ -60,7 +64,7 @@ async function deleteWord(id) {
     //if auth.currentUser is not null, then use addDoc with parameters
     if (signedIn) {
         await deleteDoc(doc(db, "palabras", id));
-        alert("The document with ID: " + id + "has been deleted");
+        alert("¡Se ha eliminado el post de manera exitosa!");
         obtener_palabras(true);
     } else {
         alert('ERROR, Inicie sesión');
@@ -70,26 +74,24 @@ async function deleteWord(id) {
 async function editWord(id, title, desc, imgLink, vidLink) {
     //check if there is an user signed in
     let signedIn = auth.currentUser;
+    var editorSt = "Anónimo"
     //if auth.currentUser is not null, then use addDoc with parameters
     if (signedIn) {
-        let today = new Date();
+        editorSt = auth.currentUser.email;
+    } 
+    let today = new Date();
         var date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
-        console.log(signedIn.email)
         await updateDoc(doc(db, "palabras", id), {
             titulo: title,
             descripcion: desc,
             // videoLink: vidLink,
             editores: arrayUnion({
-                editor: auth.currentUser.email,
+                editor: editorSt,
                 fechaedicion: date,
                 fecha: today
             })
         });
-        alert("The document with ID: " + id + "has been edited");
-    } else {
-        alert('ERROR, Inicie sesión');
-    }
-
+        alert("Se ha editado el post de manera exitosa!");
 };
 
 async function getWord(id) {
@@ -100,13 +102,6 @@ async function getWord(id) {
 
 async function getWord2(word) {
     var flag = false;
-    // const palabras = collection(db, "palabras");
-    // const q = query(palabras, where("titulo", "==", word));
-    // const querySnapshot = await getDocs(q);
-    // querySnapshot.forEach((doc) => {
-    //     console.log(doc.id, " => ", doc.data());
-    //     flag = true;
-    // });
     const querySnapshot = await getDocs(collection(db, "palabras"));
     querySnapshot.forEach((doc) => {
         const wordId = doc.data().titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");

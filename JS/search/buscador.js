@@ -1,5 +1,6 @@
-import { db, collection, getDocs } from "../firebase/credentials.js";
+import { db, collection, getDocs, auth } from "../firebase/credentials.js";
 import { historys, renderHistorys } from "../historial/useHistory.js";
+import { myPosts, renderMyPosts } from "../publicaciones/myposts.js";
 const formulario = document.querySelector("#inputValid");
 const resultado = document.querySelector(".posts");
 
@@ -302,7 +303,17 @@ $('#btnHistory').click(function (e) {
   console.log(arr)
 });
 
-
+//? Funcion hostory
+$('#btnMisPost').click(function (e) {
+  if (auth.currentUser !== null) {
+    e.preventDefault();
+    let arr = myPosts(indice);
+    renderMyPosts(arr);
+    console.log(arr);
+  } else {
+    alert('Debe iniciar sesión para verificar su identidad');
+  }
+});
 
 
 
