@@ -5,13 +5,69 @@
 }
 
 .btn-sec {
-  display: flex;
-
-  margin: 20px;
-  border-radius: 5px;
+  
+  color: #fff;
   font-size: 16px;
+  margin: 20px;
+ 
+  /*Transicion*/
+  background-image: -webkit-linear-gradient(45deg, #DC7633 50%, transparent 50%);
+  background-image: linear-gradient(45deg, #DC7633 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
 
-  color: black;
+
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 0.6em;
+ 
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+          
+     
+   /*Tamaño y font*/        
+  font-size: 0.9rem;  
+  font-weight: 400;
+  line-height: 1;
+  padding: 0.5em 0.6em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+
+ 
+
+
+
+
 
   /*Outline, quita el borde negro del boton, luego de darle click*/
 }
+
+.btn-sec:hover {
+  background-position: 0;
+}
+
+
+
+.btn-sec:hover, .btn-sec:focus {
+  color: #fff;
+  outline: 0;
+}
+
+
+
+

@@ -217,6 +217,7 @@ ul.active{
 .form-group{
   display: none;
 }
+
 /*esto pasa cuando la web llega a un tamaño en especifico*/
 @media (min-width: 1090px){
   /*Esto pasa cuando se regresa a un tamaño normal*/
@@ -242,9 +243,9 @@ ul.active{
   }
   .form-group{
     height: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: right;
+    display: flex;
+    align-items: center;
+    justify-content: right;
   }
   
 }
