@@ -10,17 +10,17 @@ import {
 } from "../firebase/credentials.js";
 
 //funcion que nos ayuda para crear usuarios nuevos con correo
-function registroCorreo(email, password, nombre, apellido, url) {
+function registroCorreo(email, password, nombre, url) {
   //Verificacion de campos
-  if (email.length < 1 || password.length < 8 || nombre.length < 1 || apellido.length < 1) {
+  if (email.length < 1 || password.length < 8 || nombre.length < 1 ) {
     alert("Campos no validos");
     return;
   }
 
-  if (password.length >= 8 || email == "" || nombre == "" || apellido == "") {
+  if (password.length >= 8 || email == "" || nombre == "" ) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const nombres = `${nombre} ${apellido}`;
+        const nombres = `${nombre}`;
         updateProfiles(nombres, url);
         const user = userCredential.user
 
@@ -127,12 +127,18 @@ function singouts() {
       $("#btnInicioSesion").show();
       $('#btnCerrarSesion').hide();
       const img = document.getElementById("avatar");
-      img.src = "/GlosarioWEB/imagenes/usuario.png";
+      img.src = "https://firebasestorage.googleapis.com/v0/b/proyecto-gloasario.appspot.com/o/Imagenes%2Fusuario.png?alt=media&token=81827144-7920-4066-ba2b-3743b968555e";
     })
     .catch((error) => {
       // An error happened.
     });
 }
+
+
+$('.logo-google').click(function (e) { 
+  e.preventDefault();
+  accesoGmail();
+});
 
 /*
 La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.

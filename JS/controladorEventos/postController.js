@@ -114,12 +114,7 @@ $("#btnMisPost").click(function (e) {
 $("#btnInicioEmail").click(function (e) {
   let email = document.getElementById("emailSesion").value
   let pass = document.getElementById("passwordSesion").value
-  if (verificationLogin(pass, email) == true) {
-  } else if (verificationLogin(pass, email) == 'email') {
-    alert("Cualquier dirección de correo elecrónico que contenga caracteres Unicode.");
-  } else if (verificationLogin(pass, email) == 'pass') {
-    alert("La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. Puede tener otros símbolos.");
-  }
+  accesoCorreo(email, pass);
 });
 
 //!esta es la funcion para verificar el formulario de registro email
@@ -127,11 +122,11 @@ $("#btnRegistroEmail").click(function (e) {
   let email = document.getElementById("emailContactoReg").value
   let pass = document.getElementById("passwordReg").value
   let nombre = document.getElementById("nombreContactoReg").value
-
+  let photo = "https://firebasestorage.googleapis.com/v0/b/proyecto-gloasario.appspot.com/o/Imagenes%2Flego_smiley_calm_preview.png?alt=media&token=214e3d01-706f-4500-aa93-0dc6f567384e"
   if (nombre == ""){
     alert("Debe ingresar un nombre!");
   }else if (verificationLogin(pass, email) == true) {
-    console.log("Cumple con la verifiacion de datos");
+    registroCorreo(email, pass, nombre, photo);
   } else if (verificationLogin(pass, email) == 'email') {
     alert("Cualquier dirección de correo elecrónico que contenga caracteres Unicode.");
   } else if (verificationLogin(pass, email) == 'pass') {
@@ -148,7 +143,7 @@ $("#btnInicioSesion").click(function (e) {
   //   "12345678",
   //   "Gustavo",
   //   "Tavo",
-  //   "https://images.unsplash.com/photo-1633121919063-471d6534a2e1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1974&q=80"
+  //   
   //  );
   // accesoGmail();
 });
