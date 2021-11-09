@@ -10,7 +10,7 @@ import {
 import { crearPost, showPosts } from "../publicaciones/publicacion.js";
 import { insertWord, deleteWord, editWord, getWord, getWord2 } from "../publicaciones/crud.js"
 import { uploadImg } from "../cloudStorage/uploadCloud.js"
-import { obtener_palabras } from "../search/buscador.js";
+import { mostrar, obtener_palabras} from "../search/buscador.js";
 
 var idEdit;
 
@@ -38,12 +38,12 @@ $("#btnModalPost").click(function (e) {
 //close popup button
 $('.close-btn').click(function (e) {
   $('#popup-1').toggleClass('active');
-  obtener_palabras();
+  mostrar();
 });
 
 $('.close-btn2').click(function (e) {
   $('#popup-2').toggleClass('active');
-  obtener_palabras();
+  mostrar();
 });
 
 

@@ -17,7 +17,6 @@ import {
     uploadImg,
     getImgDownloadURL
 } from "../cloudStorage/uploadCloud.js";
-import { obtener_palabras } from "../search/buscador.js";
 
 
 //function for add new doc in Firestore
@@ -62,7 +61,7 @@ async function deleteWord(id) {
     if (signedIn) {
         await deleteDoc(doc(db, "palabras", id));
         alert("The document with ID: " + id + "has been deleted");
-        obtener_palabras();
+        obtener_palabras(true);
     } else {
         alert('ERROR, Inicie sesión');
     }

@@ -8,27 +8,15 @@ var indice = []
 async function obtener_palabras(btnObtener) {
   $(".post").remove();
   const querySnapshot = await getDocs(collection(db, "palabras"));
+  //recorre varias consultas
   querySnapshot.forEach((doc) => {
     const wordId = doc.data();
-    let joinObject = Object.assign(wordId, {id: doc.id})
+    let joinObject = Object.assign(wordId, { id: doc.id })
     arrayTest.push(joinObject);
-    const textoIngresado = formulario.value.toLowerCase();
-    let nombre =
-    joinObject.descripcion.toLowerCase() + ". " + wordId.titulo.toLowerCase();
 
-    if (btnObtener) {
-      arrayTest.sort((a,b)=> (a.titulo > b.titulo ? 1 : -1))
-      arrayTest.forEach((obj) => {
-        let html = obtenerPostTemplate(
-          obj.id,
-          obj.autor,
-          obj.titulo,
-          obj.descripcion,
-          obj.fechacreacion
-        );
-        $(".posts").append(html);
-      })
-    }else{
+    const textoIngresado = formulario.value.toLowerCase();
+    let nombre = joinObject.descripcion.toLowerCase() + ". " + wordId.titulo.toLowerCase();
+    if (!btnObtener) {
       if (nombre.indexOf(textoIngresado) !== -1) {
         let html = obtenerPostTemplate(
           joinObject.id,
@@ -40,12 +28,44 @@ async function obtener_palabras(btnObtener) {
         $(".posts").append(html);
       }
     }
+    arrayTest.sort((a, b) => (a.titulo > b.titulo ? 1 : -1))
   });
   indice = [...arrayTest]
-  console.log(arrayTest.length)
+  console.log(indice.length)
   arrayTest = [];
+  if (btnObtener) {
+    mostrar();
+  }
+
 }
 obtener_palabras(true);
+
+const mostrar = () => {
+  console.log('no entro')
+  $(".post").remove();
+  indice.forEach((obj) => {
+    let html = obtenerPostTemplate(
+      obj.id,
+      obj.autor,
+      obj.titulo,
+      obj.descripcion,
+      obj.fechacreacion
+    );
+    $(".posts").append(html);
+  })
+
+
+  // arrayTest.forEach((obj) => {
+  //   let html = obtenerPostTemplate(
+  //     obj.id,
+  //     obj.autor,
+  //     obj.titulo,
+  //     obj.descripcion,
+  //     obj.fechacreacion
+  //   );
+  //   $(".posts").append(html);
+  // })
+}
 
 //indice######################################################
 document.getElementById("ALabel").addEventListener("click", searchA);
@@ -75,164 +95,164 @@ document.getElementById("XLabel").addEventListener("click", searchX);
 document.getElementById("YLabel").addEventListener("click", searchY);
 document.getElementById("ZLabel").addEventListener("click", searchZ);
 document.getElementById("Clear").addEventListener("click", Clear);
-function searchA(){
+function searchA() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'a')
   })
 }
-function searchB(){
+function searchB() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'b')
   })
 }
-function searchC(){
+function searchC() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'c')
   })
 }
-function searchD(){
+function searchD() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'd')
   })
 }
-function searchE(){
+function searchE() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'e')
   })
 }
-function searchF(){
+function searchF() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'f')
   })
 }
-function searchG(){
+function searchG() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'g')
   })
 }
-function searchH(){
+function searchH() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'h')
   })
 }
-function searchI(){
+function searchI() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'i')
   })
 }
-function searchJ(){
+function searchJ() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'j')
   })
 }
-function searchK(){
+function searchK() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'k')
   })
 }
-function searchL(){
+function searchL() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'l')
   })
 }
-function searchM(){
+function searchM() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'm')
   })
 }
-function searchN(){
+function searchN() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'n')
   })
 }
-function searchO(){
+function searchO() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'o')
   })
 }
-function searchP(){
+function searchP() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'p')
   })
 }
-function searchQ(){
+function searchQ() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'q')
   })
 }
-function searchR(){
+function searchR() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'r')
   })
 }
-function searchS(){
+function searchS() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 's')
   })
 }
-function searchT(){
+function searchT() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 't')
   })
 }
-function searchU(){
+function searchU() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'u')
   })
 }
-function searchV(){
+function searchV() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'v')
   })
 }
-function searchW(){
+function searchW() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'w')
   })
 }
-function searchX(){
+function searchX() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'x')
   })
 }
-function searchY(){
+function searchY() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'y')
   })
 }
-function searchZ(){
+function searchZ() {
   $(".post").remove();
   indice.forEach((obj) => {
     grafica(obj, 'z')
   })
 }
-function grafica(obj, letra){
-  if(obj.titulo.toLowerCase().charAt(0) == letra){
+function grafica(obj, letra) {
+  if (obj.titulo.toLowerCase().charAt(0) == letra) {
     let html = obtenerPostTemplate(
       obj.id,
       obj.autor,
@@ -243,8 +263,8 @@ function grafica(obj, letra){
     $(".posts").append(html)
   }
 }
-function Clear(){
-  obtener_palabras(false)
+function Clear() {
+  mostrar()
 }
 const d = document.createElement('div')
 
@@ -252,14 +272,17 @@ const d = document.createElement('div')
 
 $("#logobuscar").click(function (e) {
   e.preventDefault();
-  obtener_palabras(false);
+  mostrar()
 });
 
 $("#inputValid").keyup(function (e) {
   // Number 13 is the "Enter" key on the keyboard
+  let valor = document.getElementById("inputValid").value
   if (e.keyCode === 13) {
     e.preventDefault();
     obtener_palabras(false);
+  }else if(valor.length == 0){
+    obtener_palabras(true);
   }
 });
 
@@ -267,12 +290,12 @@ $("#btnTodoPost").click(function (e) {
   $('.indice').show();
   $('.container-category').show();
   $(".post").remove();
-  obtener_palabras(true);
+  mostrar();
 });
 
 
 //? Funcion hostory
-$('#btnHistory').click(function (e) { 
+$('#btnHistory').click(function (e) {
   e.preventDefault();
   let arr = historys(indice);
   renderHistorys(arr);
@@ -294,7 +317,7 @@ function obtenerPostTemplate(
   descripcion,
   fecha
 ) {
-    return `<article class="post">
+  return `<article class="post">
           <div class="post-titulo">
               <h5 id="${id}">${titulo}</h5>
           </div>
@@ -319,4 +342,4 @@ function obtenerPostTemplate(
           </div>
       </article>`;
 }
-export { obtener_palabras };
+export { mostrar };
