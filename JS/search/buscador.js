@@ -5,7 +5,7 @@ const resultado = document.querySelector(".posts");
 
 var arrayTest = [];
 var indice = []
-async function obtener_palabras() {
+async function obtener_palabras(btnObtener) {
   $(".post").remove();
   const querySnapshot = await getDocs(collection(db, "palabras"));
   querySnapshot.forEach((doc) => {
@@ -16,32 +16,36 @@ async function obtener_palabras() {
     let nombre =
     joinObject.descripcion.toLowerCase() + ". " + wordId.titulo.toLowerCase();
 
-    // if (nombre.indexOf(textoIngresado) !== -1) {
-    //   let html = obtenerPostTemplate(
-    //     joinObject.id,
-    //     joinObject.autor,
-    //     joinObject.titulo,
-    //     joinObject.descripcion,
-    //     joinObject.fechacreacion
-    //   );
-    //   $(".posts").append(html);
-    // }
+    if (btnObtener) {
+      arrayTest.sort((a,b)=> (a.titulo > b.titulo ? 1 : -1))
+      arrayTest.forEach((obj) => {
+        let html = obtenerPostTemplate(
+          obj.id,
+          obj.autor,
+          obj.titulo,
+          obj.descripcion,
+          obj.fechacreacion
+        );
+        $(".posts").append(html);
+      })
+    }else{
+      if (nombre.indexOf(textoIngresado) !== -1) {
+        let html = obtenerPostTemplate(
+          joinObject.id,
+          joinObject.autor,
+          joinObject.titulo,
+          joinObject.descripcion,
+          joinObject.fechacreacion
+        );
+        $(".posts").append(html);
+      }
+    }
   });
-  arrayTest.sort((a,b)=> (a.titulo > b.titulo ? 1 : -1))
-  arrayTest.forEach((obj) => {
-    let html = obtenerPostTemplate(
-      obj.id,
-      obj.autor,
-      obj.titulo,
-      obj.descripcion,
-      obj.fechacreacion
-    );
-    $(".posts").append(html);
-  })
   indice = [...arrayTest]
+  console.log(arrayTest.length)
   arrayTest = [];
 }
-obtener_palabras();
+obtener_palabras(true);
 
 //indice######################################################
 document.getElementById("ALabel").addEventListener("click", searchA);
@@ -240,7 +244,7 @@ function grafica(obj, letra){
   }
 }
 function Clear(){
-  obtener_palabras()
+  obtener_palabras(false)
 }
 const d = document.createElement('div')
 
@@ -248,14 +252,14 @@ const d = document.createElement('div')
 
 $("#logobuscar").click(function (e) {
   e.preventDefault();
-  obtener_palabras();
+  obtener_palabras(false);
 });
 
 $("#inputValid").keyup(function (e) {
   // Number 13 is the "Enter" key on the keyboard
   if (e.keyCode === 13) {
     e.preventDefault();
-    obtener_palabras();
+    obtener_palabras(false);
   }
 });
 
@@ -263,7 +267,7 @@ $("#btnTodoPost").click(function (e) {
   $('.indice').show();
   $('.container-category').show();
   $(".post").remove();
-  obtener_palabras();
+  obtener_palabras(true);
 });
 
 
