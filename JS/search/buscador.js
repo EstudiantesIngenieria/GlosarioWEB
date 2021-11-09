@@ -342,4 +342,4 @@ function obtenerPostTemplate(
           </div>
       </article>`;
 }
-export { mostrar };
+export { mostrar, obtener_palabras};
