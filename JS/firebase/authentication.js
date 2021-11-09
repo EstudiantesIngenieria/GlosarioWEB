@@ -11,13 +11,18 @@ import {
 
 //funcion que nos ayuda para crear usuarios nuevos con correo
 function registroCorreo(email, password, nombre, apellido, url) {
+  //Verificacion de campos
+  if (email.length < 1 || password.length < 8 || nombre.length < 1 || apellido.length < 1) {
+    alert("Campos no validos");
+    return;
+  }
+
   if (password.length >= 8 || email == "" || nombre == "" || apellido == "") {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const nombres = `${nombre} ${apellido}`;
         updateProfiles(nombres, url);
         const user = userCredential.user
-        console.log('entro')
 
       })
       .catch((error) => {
@@ -138,15 +143,15 @@ Cualquier dirección de correo elecrónico que contenga caracteres Unicode
 */
 
 function verificationLogin(cadena, cadenaEmail) {
-  let regExEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i
-  let regexPass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
+  let regExEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
+  let regexPass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
 
-  if (!regexPass.test(cadena)) {
-    return 'pass'
-  }else if(!regExEmail.test(cadenaEmail)){
-    return 'email'
+  if(!regExEmail.test(cadenaEmail) || cadenaEmail == ""){
+    return 'email';
+  }else if (!regexPass.test(cadena) || cadena == "") {
+    return 'pass';
   }else{
-    return true
+    return true;
   }
 }
 

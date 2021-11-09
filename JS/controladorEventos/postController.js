@@ -7,7 +7,7 @@ import {
   verificaSesion,
   verificationLogin,
 } from "../firebase/authentication.js";
-import { crearPost, showPosts} from "../publicaciones/publicacion.js";
+import { crearPost, showPosts } from "../publicaciones/publicacion.js";
 import { insertWord, deleteWord, editWord, getWord, getWord2 } from "../publicaciones/crud.js"
 import { uploadImg } from "../cloudStorage/uploadCloud.js"
 import { obtener_palabras } from "../search/buscador.js";
@@ -18,14 +18,14 @@ $(document).ready(function () {
   verificaSesion();
 });
 //click cerrar sesion 
-$('#btnCerrarSesion').click(function (e) { 
+$('#btnCerrarSesion').click(function (e) {
   e.preventDefault();
   singouts();
 });
 
 
 //popup
-$(".overlay").click(function (e) { 
+$(".overlay").click(function (e) {
   e.preventDefault();
   $('#popup-1').toggleClass('active');
 });
@@ -33,16 +33,15 @@ $(".overlay").click(function (e) {
 $("#btnModalPost").click(function (e) {
   e.preventDefault();
   // singouts();
-  console.log('modal open')
   $('#popup-1').toggleClass('active');
 });
 //close popup button
-$('.close-btn').click(function (e) { 
+$('.close-btn').click(function (e) {
   $('#popup-1').toggleClass('active');
   obtener_palabras();
 });
 
-$('.close-btn2').click(function (e) { 
+$('.close-btn2').click(function (e) {
   $('#popup-2').toggleClass('active');
   obtener_palabras();
 });
@@ -57,7 +56,7 @@ $('.close-btn2').click(function (e) {
 // });
 
 //Submit new post when btnRegistroPost is clicked
-$('#btnRegistroPost').click(async function (e) { 
+$('#btnRegistroPost').click(async function (e) {
   e.preventDefault();
   //get the value from the title input
   const postTitle = document.getElementById("tituloNewPost").value;
@@ -65,7 +64,7 @@ $('#btnRegistroPost').click(async function (e) {
   const postDesc = document.getElementById("descripcionNewPost").value;
   // //check if user selected a file
   let validation = await getWord2(postTitle);
-  if (!validation){
+  if (!validation) {
     insertWord(postTitle, postDesc);
     alert('Aún no registrado');
   } else {
@@ -73,27 +72,33 @@ $('#btnRegistroPost').click(async function (e) {
   }
 });
 
-$('#btnRegistroEditPost').click(function (e) { 
+$('#btnRegistroEditPost').click(function (e) {
   e.preventDefault();
-  console.log("funcionando boton editar");
   //get the value from the title input
   const postTitle = document.getElementById("tituloEditPost").value;
   //get the value from the description input
   const postDesc = document.getElementById("descripcionEditPost").value;
   //get the value from the video link input
   // const postVidLink = document.getElementById("linkVideoEditPost").value;
-  editWord(idEdit, postTitle, postDesc, null, null);
-  idEdit = "";
+
+  //Verificacion de campos
+  if (postTitle.length < 1 || postDesc.length < 1) {
+    alert("Los campos del titulo y la descripcion no pueden quedar vacios!");
+  } else {
+    editWord(idEdit, postTitle, postDesc, null, null);
+    idEdit = "";
+  }
+
 });
 
-$(document).on('click', '.delete-btn-post', function(e) {
-  console.log("Editar");
-  deleteWord(this.id);
+$(document).on('click', '.delete-btn-post', async function (e) {
+  if (window.confirm("¿Está seguro que desea eliminar este documento?")) {
+    await deleteWord(this.id);
+  }
 });
 
-$(document).on('click', '.btn-sec', async function(e) {
+$(document).on('click', '.btn-pop', async function (e) {
   $('#popup-2').toggleClass('active');
-  console.log("Editar");
   // document.getElementById("popup-2").classList.toggle("active");
   let promise = await getWord(this.id);
   document.getElementById("tituloEditPost").value = promise.titulo;
@@ -101,7 +106,7 @@ $(document).on('click', '.btn-sec', async function(e) {
   idEdit = this.id;
 });
 
-$("#btnMisPost").click(function (e) { 
+$("#btnMisPost").click(function (e) {
   e.preventDefault();
   // crearPost('1', 'Acta de constitución', 'Documento en el que se encuentra de forma resumida los datos y componentes clave de la fase de iniciación del proyecto como lo pueden ser el Alcance, Objetivos o Stakeholders.', null, null)
 });
@@ -110,16 +115,32 @@ $("#btnInicioEmail").click(function (e) {
   let email = document.getElementById("emailSesion").value
   let pass = document.getElementById("passwordSesion").value
   if (verificationLogin(pass, email) == true) {
-    console.log("Cumple con la verifiacion de datos");
-  }else if(verificationLogin(pass, email) == 'pass'){
-    console.log("Contraseña no pasa");
-  }else if(verificationLogin(pass, email) == 'email'){
-    console.log("Email no pasa");
+  } else if (verificationLogin(pass, email) == 'email') {
+    alert("Cualquier dirección de correo elecrónico que contenga caracteres Unicode.");
+  } else if (verificationLogin(pass, email) == 'pass') {
+    alert("La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. Puede tener otros símbolos.");
   }
 });
 
+//!esta es la funcion para verificar el formulario de registro email
+$("#btnRegistroEmail").click(function (e) {
+  let email = document.getElementById("emailContactoReg").value
+  let pass = document.getElementById("passwordReg").value
+  let nombre = document.getElementById("nombreContactoReg").value
+
+  if (nombre == ""){
+    alert("Debe ingresar un nombre!");
+  }else if (verificationLogin(pass, email) == true) {
+    console.log("Cumple con la verifiacion de datos");
+  } else if (verificationLogin(pass, email) == 'email') {
+    alert("Cualquier dirección de correo elecrónico que contenga caracteres Unicode.");
+  } else if (verificationLogin(pass, email) == 'pass') {
+    alert("La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. Puede tener otros símbolos.");
+  }
+});
 
 $("#btnInicioSesion").click(function (e) {
+
   //login
   //accesoCorreo("fernando@gmail.com", "12345678");
   // registroCorreo(

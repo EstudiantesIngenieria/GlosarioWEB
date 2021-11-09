@@ -4,12 +4,12 @@ import {
     addDoc,
     getDoc,
     getDocs,
-    deleteDoc, 
-    updateDoc, 
-    doc, 
+    deleteDoc,
+    updateDoc,
+    doc,
     arrayUnion,
     auth,
-    query, 
+    query,
     where
 } from "../firebase/credentials.js";
 
@@ -21,21 +21,28 @@ import { obtener_palabras } from "../search/buscador.js";
 
 
 //function for add new doc in Firestore
-async function insertWord(title, desc){
-   // let imgURL = imgLink;
+async function insertWord(title, desc) {
+    // let imgURL = imgLink;
     //If there's a file to upload calls the function from uploadCloud.js
-//    if (imgLink!= null){
-//        let promise = await uploadImg(imgLink, file);
-//        imgURL = await getImgDownloadURL(imgLink);
-//    }
+    //    if (imgLink!= null){
+    //        let promise = await uploadImg(imgLink, file);
+    //        imgURL = await getImgDownloadURL(imgLink);
+    //    }
+
+    //Verificacion de campos
+    if (title.length < 1 || desc.length < 1) {
+        alert("Los campos del titulo y la descripcion no pueden quedar vacios!");
+        return;
+    }
+
     //check if there is an user signed in
     let signedIn = auth.currentUser;
     //if auth.currentUser is not null, then use addDoc with parameters
     if (signedIn) {
-        let today = new Date();   
+        let today = new Date();
         var date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
         const docRef = await addDoc(collection(db, "palabras"), {
-            //autor: auth.currentUser,
+            autor: auth.currentUser.email,
             titulo: title,
             descripcion: desc,
             // imagenLink: imgURL,
@@ -48,7 +55,7 @@ async function insertWord(title, desc){
     }
 };
 
-async function deleteWord(id){
+async function deleteWord(id) {
     //check if there is an user signed in
     let signedIn = auth.currentUser;
     //if auth.currentUser is not null, then use addDoc with parameters
@@ -61,12 +68,12 @@ async function deleteWord(id){
     }
 }
 
-async function editWord(id, title, desc, imgLink, vidLink){
+async function editWord(id, title, desc, imgLink, vidLink) {
     //check if there is an user signed in
     let signedIn = auth.currentUser;
     //if auth.currentUser is not null, then use addDoc with parameters
     if (signedIn) {
-        let today = new Date();   
+        let today = new Date();
         var date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
         console.log(signedIn.email)
         await updateDoc(doc(db, "palabras", id), {
@@ -83,16 +90,16 @@ async function editWord(id, title, desc, imgLink, vidLink){
     } else {
         alert('ERROR, Inicie sesión');
     }
-    
+
 };
 
-async function getWord(id){
+async function getWord(id) {
     const docRef = doc(db, "palabras", id);
     const docSnap = await getDoc(docRef);
     return docSnap.data();
 };
 
-async function getWord2(word){
+async function getWord2(word) {
     var flag = false;
     // const palabras = collection(db, "palabras");
     // const q = query(palabras, where("titulo", "==", word));
@@ -104,11 +111,11 @@ async function getWord2(word){
     const querySnapshot = await getDocs(collection(db, "palabras"));
     querySnapshot.forEach((doc) => {
         const wordId = doc.data().titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        if (wordId == word.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")){
+        if (wordId == word.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) {
             console.log(wordId);
             flag = true;
         }
-      });
+    });
     return flag;
 };
 
