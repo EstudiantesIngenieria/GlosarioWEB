@@ -34,7 +34,13 @@ async function insertWord(title, desc) {
 
     //Verificacion de campos
     if (title.length < 1 || desc.length < 1) {
-        alert("Los campos del titulo y la descripcion no pueden quedar vacios!");
+        //alert("Los campos del titulo y la descripcion no pueden quedar vacios!");
+        Swal.fire({
+            icon: 'info',
+            
+            text: 'Debe iniciar sesión para verificar su identidad',
+            
+          })
         return;
     }
 
@@ -52,9 +58,19 @@ async function insertWord(title, desc) {
             // videoLink: vidLink,
             fechacreacion: date
         });
-        alert("Inserción de post de manera exitosa!");
+       // alert("Inserción de post de manera exitosa!");
+        Swal.fire({
+            icon: 'success',           
+            text: 'Inserción de post de manera exitosa!',          
+          })
+        
     } else {
-        alert('ERROR, Inicie sesión');
+        //alert('ERROR, Inicie sesión');
+        Swal.fire({
+            icon: 'error',           
+            text: 'Inicie sesión!',          
+          })
+        
     }
 };
 

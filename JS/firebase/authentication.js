@@ -67,9 +67,21 @@ function accesoCorreo(email, password) {
       console.log("Codido error : ", errorCode);
       console.log("mensaje error: ", errorMessage);
       if (errorCode === "auth/wrong-password") {
-        alert("Contraseña incorrecta");
+        //alert("Contraseña incorrecta");
+        Swal.fire({
+          icon: 'error',
+          
+          text: 'Contraseña incorrecta',
+          
+        })
       } else if(errorCode === "auth/user-not-found") {
-        alert("Usuario no encontrado");
+        //alert("Usuario no encontrado");
+        Swal.fire({
+          icon: 'info',
+          
+          text: 'Usuario no encontrado',
+          
+        })
       }
     });
 }

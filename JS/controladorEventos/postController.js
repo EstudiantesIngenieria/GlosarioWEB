@@ -87,7 +87,13 @@ $('#btnRegistroEditPost').click(async function (e) {
   // const postVidLink = document.getElementById("linkVideoEditPost").value;
   //Verificacion de campos
   if (postTitle.length < 1 || postDesc.length < 1) {
-    alert("Los campos del titulo y la descripcion no pueden quedar vacios!");
+    //alert("Los campos del titulo y la descripcion no pueden quedar vacios!");
+    Swal.fire({
+      icon: 'info',
+      
+      text: 'Los campos del titulo y la descripcion no pueden quedar vacios!',
+      
+    })
   } else {
     if (pastTitle.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == postTitle.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")){
       await editWord(idEdit, postTitle, postDesc, null, null);
@@ -172,13 +178,31 @@ $("#btnRegistroEmail").click(function (e) {
   let nombre = document.getElementById("nombreContactoReg").value
   let photo = "https://firebasestorage.googleapis.com/v0/b/proyecto-gloasario.appspot.com/o/Imagenes%2Flego_smiley_calm_preview.png?alt=media&token=214e3d01-706f-4500-aa93-0dc6f567384e"
   if (nombre == ""){
-    alert("Debe ingresar un nombre!");
+    //alert("Debe ingresar un nombre!");
+    Swal.fire({
+      icon: 'info',
+      
+      text: 'Debe ingresar un nombre!',
+      
+    })
   }else if (verificationLogin(pass, email) == true) {
     registroCorreo(email, pass, nombre, photo);
   } else if (verificationLogin(pass, email) == 'email') {
-    alert("Cualquier dirección de correo elecrónico que contenga caracteres Unicode.");
+    //alert("Cualquier dirección de correo elecrónico que contenga caracteres Unicode.");
+    Swal.fire({
+      icon: 'info',
+      
+      text: 'Cualquier dirección de correo elecrónico que contenga caracteres Unicode.!',
+      
+    })
   } else if (verificationLogin(pass, email) == 'pass') {
-    alert("La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. Puede tener otros símbolos.");
+    //alert("La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. Puede tener otros símbolos.");
+    Swal.fire({
+      icon: 'info',
+      
+      text: 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. Puede tener otros símbolos!',
+      
+    })
   }
 });
 

@@ -311,7 +311,13 @@ $('#btnMisPost').click(function (e) {
     renderMyPosts(arr);
     console.log(arr);
   } else {
-    alert('Debe iniciar sesión para verificar su identidad');
+    //alert('Debe iniciar sesión para verificar su identidad');
+    Swal.fire({
+      icon: 'info',
+      
+      text: 'Debe iniciar sesión para verificar su identidad',
+      
+    })
   }
 });
 
