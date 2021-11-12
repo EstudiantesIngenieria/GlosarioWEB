@@ -97,7 +97,12 @@ function accesoGmail() {
       const {displayName, email, photoURL} = result.user;
       const img = document.getElementById("avatar");
       img.src = photoURL;
-      alert('Bienvenido ' + displayName);
+      //alert('Bienvenido ' + displayName);
+      Swal.fire({
+        icon: 'success',       
+        text: 'Bienvenido ' + displayName,
+        sdfsdfdf
+      })
       console.log(photoURL)
 
     })
