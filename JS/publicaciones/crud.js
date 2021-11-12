@@ -91,7 +91,13 @@ async function editWord(id, title, desc, imgLink, vidLink) {
                 fecha: today
             })
         });
-        alert("Se ha editado el post de manera exitosa!");
+        //alert("Se ha editado el post de manera exitosa!");
+        Swal.fire({
+            icon: 'success',
+            title: 'Bien',
+            text: 'Se ha editado correctamente!',
+            
+          })
 };
 
 async function getWord(id) {

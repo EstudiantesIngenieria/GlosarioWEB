@@ -131,7 +131,13 @@ $(document).on('click', '.delete-btn-post', async function (e) {
       alert('Solo el autor puede eliminar la palabra');
     }
   } else {
-    alert('Debe iniciar sesión para verificar su identidad');
+    //alert('Debe iniciar sesión para verificar su identidad');
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Inicia sesión para colaborar con la comunidad!',
+     
+    })
   }
 });
 
