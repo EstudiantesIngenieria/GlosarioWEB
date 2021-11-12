@@ -134,7 +134,13 @@ $(document).on('click', '.delete-btn-post', async function (e) {
         obtener_palabras(true);
       }
     } else {
-      alert('Solo el autor puede eliminar la palabra');
+     // alert('Solo el autor puede eliminar la palabra');
+      Swal.fire({
+        icon: 'info',
+        title: 'Oops...',
+        text: 'Solo el autor puede eliminar la palabra!',
+       
+      })
     }
   } else {
     //alert('Debe iniciar sesión para verificar su identidad');

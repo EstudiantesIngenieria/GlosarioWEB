@@ -38,7 +38,7 @@ async function insertWord(title, desc) {
         Swal.fire({
             icon: 'info',
             
-            text: 'Debe iniciar sesión para verificar su identidad',
+            text: 'Los campos del titulo y la descripcion no pueden quedar vacios!',
             
           })
         return;
@@ -68,7 +68,7 @@ async function insertWord(title, desc) {
         //alert('ERROR, Inicie sesión');
         Swal.fire({
             icon: 'error',           
-            text: 'Inicie sesión!',          
+            text: 'Debes iniciar sesión!',          
           })
         
     }
@@ -80,10 +80,14 @@ async function deleteWord(id) {
     //if auth.currentUser is not null, then use addDoc with parameters
     if (signedIn) {
         await deleteDoc(doc(db, "palabras", id));
-        alert("¡Se ha eliminado el post de manera exitosa!");
+        //alert("¡Se ha eliminado el post de manera exitosa!");
+        Swal.fire({
+            icon: 'success',           
+            text: 'Inicie sesión!',          
+          })
         obtener_palabras(true);
     } else {
-        alert('ERROR, Inicie sesión');
+        alert('¡Se ha eliminado el post de manera exitosa!');
     }
 }
 
