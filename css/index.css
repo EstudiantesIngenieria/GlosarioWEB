@@ -202,7 +202,7 @@ ul.active{
   font-size: 17px;
 }
 .boton {
-  justify-content:right;
+  margin-left: 40%;
   background: none;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
@@ -215,7 +215,8 @@ ul.active{
 
 }
 .form-group{
-  display: none;
+  margin-right: 90px;
+  width: 30%;
 }
 
 /*esto pasa cuando la web llega a un tamaño en especifico*/
