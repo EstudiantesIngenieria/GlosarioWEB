@@ -101,7 +101,6 @@ function accesoGmail() {
       Swal.fire({
         icon: 'success',       
         text: 'Bienvenido ' + displayName,
-        sdfsdfdf
       })
       console.log(photoURL)
 
