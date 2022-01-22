@@ -5,28 +5,35 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
-  FacebookAuthProvider,
   onAuthStateChanged,
   signOut,
 } from "../firebase/credentials.js";
 
 //funcion que nos ayuda para crear usuarios nuevos con correo
-function registroCorreo(email, password, nombre, apellido, url) {
-  if (password.length >= 8 || email == "" || nombre == "" || apellido == "") {
+function registroCorreo(email, password, nombre, url) {
+  //Verificacion de campos
+  if (email.length < 1 || password.length < 8 || nombre.length < 1 ) {
+    alert("Campos no validos");
+    return;
+  }
+
+  if (password.length >= 8 || email == "" || nombre == "" ) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const nombres = `${nombre} ${apellido}`;
+        const nombres = `${nombre}`;
         updateProfiles(nombres, url);
         const user = userCredential.user
-        console.log(user)
+
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, " ", errorMessage);
+        if (errorCode == 'auth/email-already-in-use') {
+          alert('El correo electronico ya existe.  ' + errorMessage)
+        }
       });
   } else {
-    alert("las contrase;a tiene que ser mas de 8 caracteres");
+    alert("las contrase;a tiene que ser maximo de 8 caracteres");
   }
 }
 //actualiza la foto y el nombre
@@ -43,6 +50,8 @@ function updateProfiles(name, url) {
     });
 }
 
+
+//logearse con correo
 function accesoCorreo(email, password) {
   console.log(auth.currentUser);
   signInWithEmailAndPassword(auth, email, password)
@@ -55,11 +64,16 @@ function accesoCorreo(email, password) {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log("Codifo error : ", errorCode);
+      console.log("Codido error : ", errorCode);
       console.log("mensaje error: ", errorMessage);
+      if (errorCode === "auth/wrong-password") {
+        alert("Contraseña incorrecta");
+      } else if(errorCode === "auth/user-not-found") {
+        alert("Usuario no encontrado");
+      }
     });
 }
-
+//iniciar sesion con google
 function accesoGmail() {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
@@ -68,9 +82,12 @@ function accesoGmail() {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
-      const user = result.user;
+      const {displayName, email, photoURL} = result.user;
       const img = document.getElementById("avatar");
-      img.src = user.photoURL;
+      img.src = photoURL;
+      alert('Bienvenido ' + displayName);
+      console.log(photoURL)
+
     })
     .catch((error) => {
       // Handle Errors here.
@@ -80,63 +97,68 @@ function accesoGmail() {
       const email = error.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log('error code: ' + errorCode + ' message: ' + errorMessage)
       // ...
     });
 }
 
-function verifica() {
+function verificaSesion(isEdit) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const img = document.getElementById("avatar");
       img.src = user.photoURL;
       $('#btnInicioSesion').hide();
       $('#btnCerrarSesion').show();
-      
+      if (isEdit) {
+        var userA = Object.assign({}, user);
+        console.log(userA);
+        return userA;
+      }
     } else {
       console.log('si entro2')
       $('#btnCerrarSesion').hide();
     }
   });
 }
-
+//cerrar sesion 
 function singouts() {
   signOut(auth)
     .then(() => {
       $("#btnInicioSesion").show();
       $('#btnCerrarSesion').hide();
       const img = document.getElementById("avatar");
-      img.src = "/GlosarioWEB/imagenes/usuario.png";
+      img.src = "https://firebasestorage.googleapis.com/v0/b/proyecto-gloasario.appspot.com/o/Imagenes%2Fusuario.png?alt=media&token=81827144-7920-4066-ba2b-3743b968555e";
     })
     .catch((error) => {
       // An error happened.
     });
 }
 
-function accesFaccebook() {
-  const provider = new FacebookAuthProvider();
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // The signed-in user info.
-      const user = result.user;
-      console.log("entro fb");
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      const credential = FacebookAuthProvider.credentialFromResult(result);
-      const accessToken = credential.accessToken;
-      const img = document.getElementById("avatar");
-      img.src = user.photoURL;
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The AuthCredential type that was used.
-      const credential = FacebookAuthProvider.credentialFromError(error);
 
-      // ...
-    });
+$('.logo-google').click(function (e) { 
+  e.preventDefault();
+  accesoGmail();
+});
+
+/*
+La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+Puede tener otros símbolos.
+
+
+Cualquier dirección de correo elecrónico que contenga caracteres Unicode
+*/
+
+function verificationLogin(cadena, cadenaEmail) {
+  let regExEmail = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
+  let regexPass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
+
+  if(!regExEmail.test(cadenaEmail) || cadenaEmail == ""){
+    return 'email';
+  }else if (!regexPass.test(cadena) || cadena == "") {
+    return 'pass';
+  }else{
+    return true;
+  }
 }
 
-
-export { registroCorreo, accesoCorreo, accesoGmail, accesFaccebook, singouts, verifica};
+export { registroCorreo, accesoCorreo, accesoGmail, singouts, verificaSesion, verificationLogin };

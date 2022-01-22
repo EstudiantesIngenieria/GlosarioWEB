@@ -1,31 +1,32 @@
-import { doc, getApps } from "../firebase/credentials.js";
+import { doc, getApps, auth } from "../firebase/credentials.js";
 import {
   accesoCorreo,
   registroCorreo,
   accesoGmail,
   singouts,
-  accesFaccebook,
-  verifica,
+  verificaSesion,
+  verificationLogin,
 } from "../firebase/authentication.js";
-import { crearPost, showPosts} from "../publicaciones/publicacion.js";
-import { insertWord, deleteWord, editWord, getWord } from "../publicaciones/crud.js"
+import { crearPost, showPosts } from "../publicaciones/publicacion.js";
+import { insertWord, deleteWord, editWord, getWord, getWord2 } from "../publicaciones/crud.js"
 import { uploadImg } from "../cloudStorage/uploadCloud.js"
-import { obtener_palabras } from "../search/buscador.js";
+import { mostrar, obtener_palabras} from "../search/buscador.js";
 
 var idEdit;
+var pastTitle;
 
 $(document).ready(function () {
-  verifica();
+  verificaSesion();
 });
 //click cerrar sesion 
-$('#btnCerrarSesion').click(function (e) { 
+$('#btnCerrarSesion').click(function (e) {
   e.preventDefault();
   singouts();
 });
 
 
 //popup
-$(".overlay").click(function (e) { 
+$(".overlay").click(function (e) {
   e.preventDefault();
   $('#popup-1').toggleClass('active');
 });
@@ -33,18 +34,17 @@ $(".overlay").click(function (e) {
 $("#btnModalPost").click(function (e) {
   e.preventDefault();
   // singouts();
-  console.log('modal open')
   $('#popup-1').toggleClass('active');
 });
 //close popup button
-$('.close-btn').click(function (e) { 
+$('.close-btn').click(function (e) {
   $('#popup-1').toggleClass('active');
+  mostrar();
 });
 
-
-$('.close-btn2').click(function (e) { 
+$('.close-btn2').click(function (e) {
   $('#popup-2').toggleClass('active');
-  obtener_palabras();
+  mostrar();
 });
 
 
@@ -57,71 +57,135 @@ $('.close-btn2').click(function (e) {
 // });
 
 //Submit new post when btnRegistroPost is clicked
-$('#btnRegistroPost').click(function (e) { 
+$('#btnRegistroPost').click(async function (e) {
   e.preventDefault();
-  //get the file that's gonna be uploaded
-  //const inpFile = document.getElementById("btnUploadFile");
- // const file = inpFile.files[0];
   //get the value from the title input
   const postTitle = document.getElementById("tituloNewPost").value;
-  //get the value from the description input
+  // //get the value from the description input
   const postDesc = document.getElementById("descripcionNewPost").value;
-  //get the value from the video link input
- // const postVidLink = document.getElementById("linkVideoNewPost").value;
-  //check if user selected a file
-  insertWord(postTitle, postDesc);
-  //if (typeof file !== "undefined") {
-    //call the uploadImg function and insertWord function
-   // insertWord(postTitle, postDesc);
-  //} else {
-    //only call the insertWord function
- //   insertWord(postTitle, postDesc);
- // }
+  // //check if user selected a file
+  let validation = await getWord2(postTitle);
+  if (!validation) {
+    await insertWord(postTitle, postDesc);
+    $('.indice').show();
+    $('.container-category').show();
+    $(".post").remove();
+    obtener_palabras(true);
+  } else {
+    alert('¡Esta palabra ya existe!');
+  }
 });
 
-$('#btnRegistroEditPost').click(function (e) { 
+$('#btnRegistroEditPost').click(async function (e) {
   e.preventDefault();
-  console.log("funcionando boton editar");
   //get the value from the title input
   const postTitle = document.getElementById("tituloEditPost").value;
+  
   //get the value from the description input
   const postDesc = document.getElementById("descripcionEditPost").value;
   //get the value from the video link input
   // const postVidLink = document.getElementById("linkVideoEditPost").value;
-  editWord(idEdit, postTitle, postDesc, null, null);
-  idEdit = "";
+  //Verificacion de campos
+  if (postTitle.length < 1 || postDesc.length < 1) {
+    alert("Los campos del titulo y la descripcion no pueden quedar vacios!");
+  } else {
+    if (pastTitle.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == postTitle.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")){
+      await editWord(idEdit, postTitle, postDesc, null, null);
+      $('.indice').show();
+      $('.container-category').show();
+      $(".post").remove();
+      $('#popup-2').removeClass('active');
+      obtener_palabras(true);
+    } else {
+      let validation = await getWord2(postTitle);
+      if (!validation) {
+        await editWord(idEdit, postTitle, postDesc, null, null);
+        pastTitle = "";
+        idEdit = "";
+        $('.indice').show();
+        $('.container-category').show();
+        $(".post").remove();
+        $('#popup-2').removeClass('active');
+        obtener_palabras(true);
+      } else {
+        alert('¡Esta palabra ya existe!');
+      }
+    }
+    
+  }
+
 });
 
-$(document).on('click', '.delete-btn-post', function(e) {
-  console.log("Editar");
-  deleteWord(this.id);
+$(document).on('click', '.delete-btn-post', async function (e) {
+  if ( auth.currentUser != null ) {
+    let promise = await getWord(this.id);
+    if ( promise.autor == auth.currentUser.email ) {
+      if (window.confirm("¿Está seguro que desea eliminar este documento?")) {
+        await deleteWord(this.id);
+        $('.indice').show();
+        $('.container-category').show();
+        $(".post").remove();
+        obtener_palabras(true);
+      }
+    } else {
+      alert('Solo el autor puede eliminar la palabra');
+    }
+  } else {
+    alert('Debe iniciar sesión para verificar su identidad');
+  }
 });
 
-$(document).on('click', '.btn-pop', async function(e) {
+$(document).on('click', '.btn-pop', async function (e) {
+  // if ( auth.currentUser != null ) {
   $('#popup-2').toggleClass('active');
-  console.log("Editar");
   // document.getElementById("popup-2").classList.toggle("active");
   let promise = await getWord(this.id);
-  document.getElementById("tituloEditPost").value = promise.titulo;
+  pastTitle = document.getElementById("tituloEditPost").value = promise.titulo;
   const postDesc = document.getElementById("descripcionEditPost").value = promise.descripcion;
   idEdit = this.id;
+  // } else {
+  //   alert('Debe iniciar sesión para verificar su identidad');
+  // }
 });
 
-$("#btnMisPost").click(function (e) { 
+$("#btnMisPost").click(function (e) {
   e.preventDefault();
   // crearPost('1', 'Acta de constitución', 'Documento en el que se encuentra de forma resumida los datos y componentes clave de la fase de iniciación del proyecto como lo pueden ser el Alcance, Objetivos o Stakeholders.', null, null)
 });
 
+$("#btnInicioEmail").click(function (e) {
+  let email = document.getElementById("emailSesion").value
+  let pass = document.getElementById("passwordSesion").value
+  accesoCorreo(email, pass);
+});
+
+//!esta es la funcion para verificar el formulario de registro email
+$("#btnRegistroEmail").click(function (e) {
+  let email = document.getElementById("emailContactoReg").value
+  let pass = document.getElementById("passwordReg").value
+  let nombre = document.getElementById("nombreContactoReg").value
+  let photo = "https://firebasestorage.googleapis.com/v0/b/proyecto-gloasario.appspot.com/o/Imagenes%2Flego_smiley_calm_preview.png?alt=media&token=214e3d01-706f-4500-aa93-0dc6f567384e"
+  if (nombre == ""){
+    alert("Debe ingresar un nombre!");
+  }else if (verificationLogin(pass, email) == true) {
+    registroCorreo(email, pass, nombre, photo);
+  } else if (verificationLogin(pass, email) == 'email') {
+    alert("Cualquier dirección de correo elecrónico que contenga caracteres Unicode.");
+  } else if (verificationLogin(pass, email) == 'pass') {
+    alert("La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. Puede tener otros símbolos.");
+  }
+});
+
 $("#btnInicioSesion").click(function (e) {
-  e.preventDefault();
-  accesoCorreo("pepito2@gmail.com", "12345678");
+
+  //login
+  //accesoCorreo("fernando@gmail.com", "12345678");
   // registroCorreo(
   //   "pepito3@gmail.com",
   //   "12345678",
   //   "Gustavo",
   //   "Tavo",
-  //   "https://images.unsplash.com/photo-1633121919063-471d6534a2e1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1974&q=80"
-  // );
-  
-  //  accesFaccebook();
+  //   
+  //  );
+  // accesoGmail();
 });

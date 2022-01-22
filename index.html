@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="css/spiner.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/aspecto.css">
-    <link rel="stylesheet" href="css/btnIrArriba.css">
     <link rel="stylesheet" href="css/estilo_areatxt.css">
     <link rel="stylesheet" href="css/btn_publicacion.css">
+    <script defer src="JS/boton_resposive_header.js"></script>
     <!--endbuild-->
     <link rel="manifest" href="manifest.json">
 </head>
@@ -36,7 +36,8 @@
             <li><a id="btnMisPost">Mis Posts</a></li>
             <li><a id="btnModalPost">Realiza un Post</a></li>
             <li><a href="index.html#footer">Contactenos</a></li>
-            <li><a href="index.html#footer">Revista Digital</a></li>
+            <li><a target="_blank" href="https://www.canva.com/design/DAEtZ1NL49Y/tt2WEHIB0A8QsSt5OpLASA/view?utm_content=DAEtZ1NL49Y&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton">Revista Digital</a></li>
+            <li><a id="btnHistory">Historial</a></li>   
         </ul>
         <!-- buscador para cada post -->
         <div class="form-group">
@@ -45,12 +46,19 @@
                 id="inputValid">
             <input type="image" src="./icons/search-solid.svg" alt="Buscador" id="logobuscar">
         </div>
+        <button class = "boton" >
+            <div class="linea"></div>
+            <div class="linea"></div>
+            <div class="linea"></div>
+        </button>
     </nav>
+
     <hr>
     <hr>
     <hr>
     <hr>
     <hr>
+
     <header class="headerppal">
         <figure class="header-logotipo">
             <img src="https://i.ibb.co/nCtbLkv/logo.jpg" alt="Blog Logotipo">
@@ -62,7 +70,7 @@
             <a id="btnInicioSesion" class="modal-trigger waves-effect waves-light btn btnPpal">Iniciar Sesión</a>
             <a id="btnCerrarSesion" class="modal-trigger waves-effect waves-light btn btnPpal">Cerrar Sesion</a>
             <figure class="header-avatar">
-                <img id="avatar" src="imagenes/usuario.png" alt="Avatar">
+                <img id="avatar" src="https://firebasestorage.googleapis.com/v0/b/proyecto-gloasario.appspot.com/o/Imagenes%2Fusuario.png?alt=media&token=81827144-7920-4066-ba2b-3743b968555e" alt="Avatar">
             </figure>
 
     </header>
@@ -82,33 +90,33 @@
         <h3 class="indice">Índice</h3>
         <div class="container-category">
             
-            <label for="A">A</label>
-            <label for="B">B</label>
-            <label for="C">C</label>
-            <label for="D">D</label>
-            <label for="E">E</label>
-            <label for="F">F</label>
-            <label for="G">G</label>
-            <label for="H">H</label>
-            <label for="I">I</label>
-            <label for="J">J</label>
-            <label for="K">K</label>
-            <label for="L">L</label>
-            <label for="M">M</label>
-            <label for="N">N</label>
-            <label for="O">O</label>
-            <label for="P">P</label>
-            <label for="Q">Q</label>
-            <label for="R">R</label>
-            <label for="S">S</label>
-            <label for="T">T</label>
-            <label for="U">U</label>
-            <label for="V">V</label>
-            <label for="W">W</label>
-            <label for="X">X</label>
-            <label for="Y">Y</label>
-            <label for="Z">Z</label>
-
+            <label for="A" id="ALabel">A</label>
+            <label for="B" id="BLabel">B</label>
+            <label for="C" id="CLabel">C</label>
+            <label for="D" id="DLabel">D</label>
+            <label for="E" id="ELabel">E</label>
+            <label for="F" id="FLabel">F</label>
+            <label for="G" id="GLabel">G</label>
+            <label for="H" id="HLabel">H</label>
+            <label for="I" id="ILabel">I</label>
+            <label for="J" id="JLabel">J</label>
+            <label for="K" id="KLabel">K</label>
+            <label for="L" id="LLabel">L</label>
+            <label for="M" id="MLabel">M</label>
+            <label for="N" id="NLabel">N</label>
+            <label for="O" id="OLabel">O</label>
+            <label for="P" id="PLabel">P</label>
+            <label for="Q" id="QLabel">Q</label>
+            <label for="R" id="RLabel">R</label>
+            <label for="S" id="SLabel">S</label>
+            <label for="T" id="TLabel">T</label>
+            <label for="U" id="ULabel">U</label>
+            <label for="V" id="VLabel">V</label>
+            <label for="W" id="WLabel">W</label>
+            <label for="X" id="XLabel">X</label>
+            <label for="Y" id="YLabel">Y</label>
+            <label for="Z" id="ZLabel">Z</label>
+            <label id="Clear">Quitar filtros</label>
         </div>
     </section>
 
@@ -122,59 +130,26 @@
 
 
     <footer class="footer" id="footer">
-
         <div class="contenedor-footer">
-
-            <div>
-            </div>
-
-            <div class="redesSociales">
-                <!-- Esto es el footer -->
-                <p class="realizadopor"><strong>Programadores desarrollando</strong></p>
-                <p class="realizadoclase"><strong>Ingenieria</strong></p>
-                <div class="logos-redes">
-
-                </div>
-            </div>
-
-            <div class="formulario-contactenos">
-                <div class="form-col1">
-                    <div class="input-field">
-                        <input id="nombreContacto" type="text" required />
-                        <label for="nombreContacto">Nombres:</label>
-                    </div>
-                    <div class="input-field">
-                        <input id="emailContacto" type="email" required />
-                        <label for="emailContacto">E-mail</label>
-                    </div>
-
-                    
-                     <div class="tipos-comentarios"> 
-                    
-                        <div>
-                        <input type="radio" id="comentarioTipo"  name="Comentarios" value="comentarios" >
-                        <label for="comentarioTipo">Comentarios</label>
-                    
-                        <input type="radio" id="reclamoTipo"  name="reclamos" value="Reclamos" >
-                        <label for="reclamoTipo">Reclamos</label>
-                       
-                        <input type="radio" id="mejoraTipo"  name="Mejora" value="mejora" >
-                        <label for="mejoraTipo">Mejora</label>
-                       
-                        <input type="radio" id="otroTipo" name="Otro" value="otro" >
-                        <label for="otroTipo">Otro</label>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="form-col2">
-                    <label for="comentariosContacto">Comentarios:</label>
-                    <textarea id="comentariosContacto" placeholder="Escribe tu comentario" cols="30" rows="6"
-                        required></textarea>
-                        <input type="submit" class="waves-effect waves-light btn btnPpal" value="Enviar" />
-                    <!-- <input type="submit" class="waves-effect waves-light btn btnPpal" value="Enviar" /> -->
-                </div>
-            </div>
+            <p class="autores">Autores</p>
+            <ul class="footer-ul">
+                <li class="footer-li">KELVIN CANO</li>
+                <li class="footer-li">PEDRO COTOC</li>
+                <li class="footer-li">PABLO GARZONA</li>
+                <li class="footer-li">CRISTOPHER GUERRA</li>
+                <li class="footer-li">JOSÉ JUÁREZ</li>
+                <li class="footer-li">ERICK LIMA</li>
+                <li class="footer-li">JONATHAN MARTINEZ</li>
+                <li class="footer-li">FREDY MATEO</li>
+                <li class="footer-li">JOSUE MENDEZ</li>
+                <li class="footer-li">ANDREA MORALES</li>
+                <li class="footer-li">ELMER PÚ</li>
+                <li class="footer-li">DOUGLAS QUEMÉ</li>
+                <li class="footer-li">LUIS RODRÍGUEZ</li>
+                <li class="footer-li">ZOILA SANCHEZ</li>
+                <li class="footer-li">GEOVANNY TECÚM</li>
+                <li class="footer-li">JOSÉ TISTOJ</li>
+            </ul>
         </div>
     </footer>
 
@@ -207,9 +182,7 @@
                             <span>INGRESA CON:</span>
                         </div>
                         <div class="registro-iconos-redes">
-                            <a id="authFB" class="logo-facebook" href="#"></a>
-                            <a id="authGoogle" class="logo-google" href="#"></a>
-                            <a id="authTwitter" class="logo-twitter" href="#"></a>
+                            <a id="authGoogle" class="logo-google"></a>
                         </div>
                     </div>
                     <div class="col s12 m12 div-btnRegistrarse">
@@ -224,6 +197,7 @@
     <!-- Modal de registro -->
     <div id="modalRegistro" class="modal modal-registro">
         <div class="modal-content">
+            <div class="close-btn">×</div>
             <div class="container">
                 <div class="row">
                     <div class="col s12 m6 registro-bienvenida">
@@ -252,7 +226,7 @@
                         </div>
                     </div>
                     <div class="col s12 m12 div-btnRegistrarse">
-                        <a id="btnIniciarSesion" class="btn waves-effect waves-light">Iniciar Sesión<i
+                        <a id="modalSesion" class="btn waves-effect waves-light">Iniciar Sesión<i
                                 class="material-icons right">send</i></a>
                     </div>
                 </div>
@@ -311,42 +285,45 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- nuevo MODAL POST2 -->
-        <div class="editarpop" id="popup-2">
-            <div class="overlay2"></div>
-            <div class="content2">
-                <div class="close-btn2">×</div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 m6 registro-bienvenida">
-                            <h4>Edita tu publicacion</h4>
-                            <div class="registro-bienvenida-texto">
-                                Puedes editar de nuevo, si has cometido algun error.
-                            </div>
-                            <span>Corrigelo ahora.</span>
+    <!-- nuevo MODAL POST2 -->
+    <div class="editarpop" id="popup-2">
+        <div class="overlay2"></div>
+        <div class="content2">
+            <div class="close-btn2">×</div>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6 registro-bienvenida">
+                        <h4>Edita tu publicacion</h4>
+                        <div class="registro-bienvenida-texto">
+                            Puedes editar de nuevo, si has cometido algun error.
                         </div>
-                        <div class="col s12 m6 registro-formulario">
-                            <div class="input-field">
-                                <input id="tituloEditPost" type="text" maxlength="30" data-length="30" required />
-                                <label for="tituloNewPost">Titulo:</label>
-                            </div>
-                            <div class="input-field">
-                                <textarea id="descripcionEditPost" type="text" maxlength="600" data-length="600"
-                                    class="materialize-textarea" required></textarea>
-                                <label for="descripcionPost">Descripción:</label>
-                            </div>
-                            <div class="div-btnInicioSesion">
-                                <a id="btnRegistroEditPost" class="btn waves-effect waves-light">Aceptar<i
-                                        class="material-icons left">create</i></a>
-                            </div>
+                        <span>Corrigelo ahora.</span>
+                    </div>
+                    <div class="col s12 m6 registro-formulario">
+                        <div class="input-field">
+                            <input id="tituloEditPost" type="text" maxlength="30" data-length="30" required />
+                            <label for="tituloNewPost">Titulo:</label>
+                        </div>
+                        <div class="input-field">
+                            <textarea id="descripcionEditPost" type="text" maxlength="600" data-length="600"
+                                class="materialize-textarea" required></textarea>
+                            <label for="descripcionPost">Descripción:</label>
+                        </div>
+                        <div class="div-btnInicioSesion">
+                            <a id="btnRegistroEditPost" class="btn waves-effect waves-light">Aceptar<i
+                                    class="material-icons left">create</i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <section id="allPosts">
+        </div>
+    </div>
 
-            </section>
+    <section id="allPosts">
+
+    </section>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -360,7 +337,7 @@
 
 <!-- <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-firestore.js"></script> -->
 
-
+<script type="text/javascript" src="JS/general.js"></script>
 <!--build:js js/main.min.js -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js'></script>
 <script src="./script.js"></script>
@@ -372,6 +349,8 @@
 <script type="module" src="./JS/firebase/credentials.js"></script>
 <script type="module" src="./JS/firebase/authentication.js"></script>
 <script type="module" src="./JS/publicaciones/publicacion.js"></script>
+
+
 
 
 <!-- spinner -->

@@ -4,4 +4,3 @@ window.addEventListener("scroll", function(){
     
   });
   
-  
